@@ -1,0 +1,2330 @@
+TBCDString ::= OCTET STRING (SIZE(1..n))
+AddressString ::= OCTET STRING (SIZE(1..20))
+C7CHTMessage ::= OCTET STRING (SIZE (5))
+C7ChargingMessage ::= OCTET STRING (SIZE(8))
+ServiceKey ::=  OCTET STRING (SIZE(4))
+CAMELTDPData ::= SEQUENCE(
+   serviceKey     (0) IMPLICIT  ServiceKey,
+   gsmSCFAddress  (1) IMPLICIT  AddressString (SIZE (1..9)))
+CallIDNumber ::= OCTET STRING (SIZE(3))
+CallPosition ::= ENUMERATED
+
+ (valueUsedForAllCallsToDetermineIfOutputToTakePlace  (0),
+  callHasReachedCongestionOrBusyState                 (1),
+  callHasOnlyReachedThroughConnection                 (2),
+  b-AnswerHasBeenReceived                             (3))
+
+CarrierInfo ::= OCTET STRING (SIZE(2..3))
+ChargeAreaCode ::= OCTET STRING (SIZE(3))
+ChargeInformation ::= OCTET STRING (SIZE(2..33))
+ChargedParty ::= ENUMERATED
+
+ (chargingOfCallingSubscriber  (0),
+  chargingOfCalledSubscriber   (1),
+  noCharging                   (2))
+ChargingOrigin ::= OCTET STRING (SIZE(1))
+Counter ::= OCTET STRING (SIZE(1..4))
+Date ::= OCTET STRING (SIZE(3..4))
+DisconnectingParty ::= ENUMERATED
+
+ (callingPartyRelease          (0),
+  calledPartyRelease           (1),
+  networkRelease               (2))
+EosInfo ::= OCTET STRING (SIZE(1))
+ExchangeIdentity ::= IA5STRING (SIZE(1..15))
+FaultCode ::= OCTET STRING (SIZE(2))
+GSMCallReferenceNumber ::= OCTET STRING (SIZE(1..8))
+GlobalCallReference::= OCTET STRING (SIZE(3..15))
+IMSI ::= TBCDString (SIZE(3..8))
+INMarkingOfMS ::= ENUMERATED
+
+(originatingINService                                 (1),
+ terminatingINService                                 (2),
+ originatingINCategoryKeyService                      (3),
+ terminatingINCategoryKeyService                      (4),
+ originatingCAMELService                              (5),
+ terminatingCAMELService                              (6),
+ originatingExtendedCAMELServiceWithINCapabilityIndicator 
+                                                      (7),
+ terminatingExtendedCAMELServiceWithINCapabilityIndicator
+                                                      (8),
+ originatingExtendedCAMELServiceWithOriginatingINCategoryKey
+                                                      (9),
+ terminatingExtendedCAMELServiceWithTerminatingINCategoryKey
+                                                     (10),
+ subscriberDialledCAMELService                       (11),
+ subscriberDialledCAMELServiceAndOriginatingCAMELService
+                                                     (12),
+ visitedTerminatingCAMELService                      (13))
+
+InternalCauseAndLoc ::= OCTET STRING (SIZE(2))
+
+MiscellaneousInformation ::= OCTET STRING (SIZE(1))
+MobileUserClass1 ::= OCTET STRING (SIZE(1))
+MobileUserClass2 ::= OCTET STRING (SIZE(1))
+MultimediaInformation ::= SEQUENCE(
+  userRate                  (0) IMPLICIT UserRate
+                                         OPTIONAL,
+  asyncSyncIndicator        (1) IMPLICIT AsyncSyncIndicator
+                                         OPTIONAL,
+  uILayer1Protocol          (2) IMPLICIT UILayer1Protocol)
+
+NetworkCallReference ::= OCTET STRING (SIZE(5))
+NumberOfMeterPulses ::=  OCTET STRING (SIZE(3))
+OriginatedCode ::= ENUMERATED
+
+  (callOriginatingFromOwnSubscriberInSSN             (0),
+   callOriginatingFromOwnSubscriberInGSN             (1),
+   callOriginatingFromIncomingTrunk                  (2),
+   callOriginatingFromSUSblock                       (3),
+   callOriginatingFromOMSblock                       (4),
+   testCallTowardsIL-OL-BL                           (5),
+   testCallWithIndividualSelectionOfB-Subscriber     (6),
+   testCallWithIndividualSelectionExceptB-Subscriber (7),
+   testCallWithSelectionInSpecifiedRoute             (8),
+   operator                                          (9))
+OriginatingLineInformation ::= OCTET STRING (SIZE(1))
+OutputForSubscriber ::= ENUMERATED
+
+ (callingParty           (0),
+  calledParty            (1),
+  callingAndCalledParty  (2))
+OutputType ::= ENUMERATED
+ 
+  (noOutput                                (0),
+   iCIoutputForCallingSubscriber           (1),
+   iCIOutputForCalledSubscriber            (2),
+   iCIOutputForCallingAndCalledSubscribers (3),
+   tTOutputOnly                            (4),
+   tTAndICIForCallingSubscriber            (5),
+   tTAndICIForCalledSubscriber             (6),
+   tTAndICIForCallingAndCalledSubscribers  (7))
+PartialOutputRecNum ::= OCTET STRING (SIZE(1))
+
+RTCDefaultServiceHandling ::= ENUMERATED
+
+(serviceAllowed       (0),
+ serviceNotAllowed    (1))
+RTCFailureIndicator ::= OCTET STRING (SIZE(2))
+RTCNotInvokedReason ::= ENUMERATED
+
+(emergencyCall              (0),
+ callToSpecialDestination   (1),
+ callLegNotToBeCharged      (2),
+ smsNotToBeCharged          (3),
+ mcaSMSFreeOfCharge         (4),
+ undeterminedRoamingPLMN    (5))
+RTCSessionID ::= OCTET STRING (SIZE(16))
+RecordSequenceNumber ::= OCTET STRING (SIZE(3))
+RedirectionCounter ::= OCTET STRING (SIZE(1))
+Route ::= IA5STRING (SIZE(1..7))
+SubscriptionType ::= OCTET STRING (SIZE(1))
+SwitchIdentity ::= OCTET STRING (SIZE(2))
+TAC ::= OCTET STRING (SIZE(3..4))
+TariffClass ::= OCTET STRING (SIZE(2))
+TariffSwitchInd ::= ENUMERATED
+ (noTariffSwitch                    (0),
+  tariffSwitchAfterStartOfCharging  (2))
+
+Time ::= OCTET STRING (SIZE(3..4))
+TransitCarrierInfo ::= OCTET STRING (SIZE(7..96))
+
+TypeOfCallingSubscriber ::= OCTET STRING (SIZE(1))
+UserClass ::= OCTET STRING (SIZE(1))
+
+UserRate ::= ENUMERATED
+   
+  (uRIndNeg          (0),
+   uR600bps          (1),
+   uR1200bps         (2),
+   uR2400bps         (3),
+   uR3600bps         (4),
+   uR4800bps         (5),
+   uR7200bps         (6),
+   uR8000bps         (7),
+   uR9600bps         (8),
+   uR14400bps        (9),
+   uR16000bps       (10),
+   uR19200bps       (11),
+   uR32000bps       (12),
+   uR38400bps       (13),
+   uR48000bps       (14),
+   uR56000bps       (15),
+   uR64000bps       (16),
+   uR38400bps1      (17),
+   uR57600bps       (18),
+   uR28800bps       (19),
+   uR134-5bps       (21),
+   uR100bps         (22),
+   uR75bps_1200bps  (23),
+   uR1200bps_75bps  (24),
+   uR50bps          (25),
+   uR75bps          (26),
+   uR110bps         (27),
+   uR150bps         (28),
+   uR200bps         (29),
+   uR300bps         (30),
+   uR12000bps       (31))
+
+AsyncSyncIndicator ::= ENUMERATED 
+
+  (syncData        (0),
+   asyncData       (1))
+
+UILayer1Protocol ::= ENUMERATED
+
+   (v110_X30                     (1),
+    g711mulaw                    (2),
+    g711Alaw                     (3),
+    g721_32000bps_I460           (4),
+    h221_H242                    (5),
+    h223_H245                    (6),
+    nonITU_T                     (7),
+    v120                         (8),
+    x31                          (9),
+    vSELP_Speech                (10))
+
+ChargingIndicator ::= OCTET STRING (SIZE(1))
+
+Transit ::= SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    callingPartyNumber           (4) IMPLICIT AddressString OPTIONAL,
+    calledPartyNumber            (5) IMPLICIT AddressString OPTIONAL,
+    calledSubscriberIMSI         (6) IMPLICIT IMSI OPTIONAL,
+    disconnectingParty           (7) IMPLICIT DisconnectingParty 
+                                              OPTIONAL,
+    dateForStartOfCharge         (8) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge         (9) IMPLICIT Time OPTIONAL,
+    timeForStopOfCharge         (10) IMPLICIT Time OPTIONAL,
+    chargeableDuration          (11) IMPLICIT Time OPTIONAL,
+    interruptionTime            (12) IMPLICIT Time OPTIONAL,
+    timeFromRegisterSeizureToStartOfCharging
+                                (13) IMPLICIT Time OPTIONAL,
+    chargedParty                (14) IMPLICIT ChargedParty OPTIONAL,
+    originForCharging           (15) IMPLICIT ChargingOrigin OPTIONAL,
+    tariffClass                 (16) IMPLICIT TariffClass OPTIONAL,
+    tariffSwitchInd             (17) IMPLICIT TariffSwitchInd 
+                                              OPTIONAL,
+    numberOfMeterPulses         (18) IMPLICIT NumberOfMeterPulses 
+                                              OPTIONAL,
+    exchangeIdentity            (19) IMPLICIT ExchangeIdentity 
+                                              OPTIONAL,
+    mSCIdentification           (20) IMPLICIT AddressString OPTIONAL,
+    outgoingRoute               (21) IMPLICIT Route OPTIONAL,
+    incomingRoute               (22) IMPLICIT Route OPTIONAL,
+    miscellaneousInformation    (23) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    iNMarkingOfMS               (25) IMPLICIT INMarkingOfMS OPTIONAL,
+    callPosition                (26) IMPLICIT CallPosition OPTIONAL,
+    eosInfo                     (27) IMPLICIT EosInfo OPTIONAL,
+    internalCauseAndLoc         (28) IMPLICIT InternalCauseAndLoc 
+                                              OPTIONAL,
+    originalCalledNumber        (29) IMPLICIT AddressString OPTIONAL,
+    redirectingNumber           (30) IMPLICIT AddressString OPTIONAL,
+    redirectionCounter          (31) IMPLICIT RedirectionCounter
+                                              OPTIONAL,
+    redirectingDropBackNumber   (32) IMPLICIT AddressString OPTIONAL,
+    redirectingDropBack         (33) IMPLICIT NULL OPTIONAL,
+    restartDuringCall           (34) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator
+                                (35) IMPLICIT NULL OPTIONAL,
+    iCIOrdered                  (36) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber         (37) IMPLICIT OutputForSubscriber 
+                                              OPTIONAL,
+    lastPartialOutput           (38) IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (39) IMPLICIT PartialOutputRecNum 
+                                              OPTIONAL,
+    relatedCallNumber           (40) IMPLICIT CallIDNumber OPTIONAL,
+    faultCode                   (41) IMPLICIT FaultCode OPTIONAL,
+    subscriptionType            (42) IMPLICIT SubscriptionType 
+                                              OPTIONAL,
+    incompleteCallDataIndicator 
+                                (43) IMPLICIT NULL OPTIONAL,
+    incompleteCompositeCDRIndicator
+                                (44) IMPLICIT NULL OPTIONAL,
+    switchIdentity              (45) IMPLICIT SwitchIdentity 
+                                              OPTIONAL,
+    networkCallReference        (46) IMPLICIT NetworkCallReference
+                                              OPTIONAL,
+    disconnectionDueToSystemRecovery
+                                (47) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (48) IMPLICIT NULL OPTIONAL,
+    forloppReleaseDuringCall    (49) IMPLICIT NULL OPTIONAL,
+    translatedNumber            (50) IMPLICIT AddressString OPTIONAL,
+    bCSMTDPData1                (51) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData2                (52) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData3                (53) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData4                (54) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData5                (55) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData6                (56) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData7                (57) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData8                (58) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData9                (59) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData10               (60) IMPLICIT CAMELTDPData OPTIONAL,
+    gSMCallReferenceNumber      (61) IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    c7ChargingMessage           (62) IMPLICIT C7ChargingMessage 
+                                              OPTIONAL,
+    c7FirstCHTMessage           (63) IMPLICIT C7CHTMessage OPTIONAL,
+    c7SecondCHTMessage          (64) IMPLICIT C7CHTMessage OPTIONAL,
+    aCMChargingIndicator        (65) IMPLICIT ChargingIndicator
+                                              OPTIONAL,
+    aNMChargingIndicator        (66) IMPLICIT ChargingIndicator                                         
+                                              OPTIONAL,
+    mSCAddress                  (67) IMPLICIT AddressString OPTIONAL,
+    carrierInformationBackward  (68) IMPLICIT TransitCarrierInfo
+                                              OPTIONAL,
+    carrierInformationForward   (69) IMPLICIT TransitCarrierInfo
+                                              OPTIONAL,
+    chargeInformation           (70) IMPLICIT ChargeInformation
+                                              OPTIONAL,
+    disconnectionDate           (71) IMPLICIT Date OPTIONAL,
+    disconnectionTime           (72) IMPLICIT Time OPTIONAL,
+    entryPOICA                  (73) IMPLICIT ChargeAreaCode OPTIONAL,
+    exitPOICA                   (74) IMPLICIT ChargeAreaCode OPTIONAL,
+    internationalCallIndicator  (75) IMPLICIT NULL OPTIONAL,
+    mobileUserClass1            (76) IMPLICIT MobileUserClass1
+                                              OPTIONAL,
+    mobileUserClass2            (77) IMPLICIT MobileUserClass2
+                                              OPTIONAL,
+    originatingAccessISDN       (78) IMPLICIT NULL OPTIONAL,
+    originatingCarrier          (79) IMPLICIT CarrierInfo OPTIONAL,
+    originatingChargeArea       (80) IMPLICIT ChargeAreaCode OPTIONAL,
+    tDSCounter                  (81) IMPLICIT Counter OPTIONAL,
+    terminatingAccessISDN       (82) IMPLICIT NULL OPTIONAL,
+    terminatingCarrier          (83) IMPLICIT CarrierInfo OPTIONAL,
+    terminatingChargeArea       (84) IMPLICIT ChargeAreaCode OPTIONAL,
+    terminatingMobileUserClass1 (85) IMPLICIT MobileUserClass1                                           
+                                              OPTIONAL,
+    terminatingMobileUserClass2 (86) IMPLICIT MobileUserClass2
+                                              OPTIONAL,
+    contractorNumber            (87) IMPLICIT AddressString
+                                              OPTIONAL,
+    terminatingUserClass        (88) IMPLICIT UserClass OPTIONAL,
+    userClass                   (89) IMPLICIT UserClass OPTIONAL,
+    calledPartyMNPInfo          (90) IMPLICIT AddressString
+                                              OPTIONAL,
+    chargeNumber                (91) IMPLICIT AddressString
+                                              OPTIONAL,
+    originatingLineInformation  (92) IMPLICIT OriginatingLineInformation
+                                              OPTIONAL,
+    multimediaInformation       (93) IMPLICIT MultimediaInformation
+                                              OPTIONAL,
+    globalCallReference         (94) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    rTCIndicator                (95) IMPLICIT NULL
+                                              OPTIONAL,
+    rTCSessionID                (96) IMPLICIT RTCSessionID
+                                              OPTIONAL,
+    rTCDefaultServiceHandling   (97) IMPLICIT RTCDefaultServiceHandling
+                                              OPTIONAL,
+    rTCFailureIndicator         (98) IMPLICIT RTCFailureIndicator
+                                              OPTIONAL,
+    rTCNotInvokedReason         (99) IMPLICIT RTCNotInvokedReason
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL,
+
+ --F-- originatedCode           (24) IMPLICIT OriginatedCode OPTIONAL,
+ --F-- reroutingIndicator      (121) IMPLICIT NULL OPTIONAL)
+
+AoCEventModule ::= SET(
+    tAC                         (0) IMPLICIT TAC OPTIONAL,
+    cRIToMS                     (1) IMPLICIT CRIToMS OPTIONAL,
+    cRIIndicator                (2) IMPLICIT CRIIndicator OPTIONAL,
+    sSCode                      (3) IMPLICIT SSCode OPTIONAL,
+    timeForEvent                (4) IMPLICIT Time OPTIONAL,
+    incompleteCallDataIndicator
+                                (5) IMPLICIT NULL OPTIONAL,
+    gsmSCFControlOfAoC          (6) IMPLICIT NULL OPTIONAL) 
+
+SSIEventModule ::= SET(
+    tAC                         (0) IMPLICIT TAC OPTIONAL,
+    sSCode                      (1) IMPLICIT SSCode OPTIONAL,
+    sSRequest                   (2) IMPLICIT SSRequest OPTIONAL,
+    timeForEvent                (3) IMPLICIT Time OPTIONAL,
+    firstCallingLocationInformation
+                                (4) IMPLICIT LocationInformation
+                                             OPTIONAL,
+    cRIIndicator                (5) IMPLICIT CRIIndicator OPTIONAL,
+    eventCRIToMS                (6) IMPLICIT EventCRIToMS OPTIONAL,
+    incompleteCallDataIndicator
+                                (7) IMPLICIT NULL OPTIONAL,
+    networkCallReference        (9) IMPLICIT NetworkCallReference
+                                             OPTIONAL,
+    sSInvocationNotification   (10) IMPLICIT NULL OPTIONAL,
+    globalCallReference        (11) IMPLICIT GlobalCallReference
+                                              OPTIONAL)
+ServiceSwitchEventModule ::= SET(
+    tAC                         (0) IMPLICIT TAC OPTIONAL,
+    timeForEvent                (1) IMPLICIT Time OPTIONAL,
+    serviceSwitchingType        (2) IMPLICIT ServiceSwitchingType
+                                             OPTIONAL,
+    incompleteCallDataIndicator
+                                (3) IMPLICIT NULL OPTIONAL) 
+
+INServiceDataEventModule ::= SET(
+    chargePartyDistributed      (0) IMPLICIT Distributed OPTIONAL,
+    chargePartySingle           (1) IMPLICIT Single OPTIONAL,
+    chargingUnitsAddition       (2) IMPLICIT ChargingUnitsAddition
+                                             OPTIONAL,
+    genericChargingDigits       (3) IMPLICIT GenericDigitsSet
+                                             OPTIONAL,
+    genericChargingNumbers      (4) IMPLICIT GenericNumbersSet
+                                             OPTIONAL,
+    serviceFeatureCode          (5) IMPLICIT ServiceFeatureCode
+                                             OPTIONAL,
+    timeForEvent                (6) IMPLICIT Time OPTIONAL,
+    incompleteCallDataIndicator (7) IMPLICIT NULL OPTIONAL,
+    freeFormatData              (8) IMPLICIT FreeFormatData OPTIONAL,
+    sSFLegID                    (9) IMPLICIT LegID OPTIONAL,
+    freeFormatData2            (10) IMPLICIT FreeFormatData OPTIONAL,
+    freeFormatDataAppendIndicator
+                               (11) IMPLICIT NULL OPTIONAL,
+    freeFormatDataAppendIndicator2
+                               (12) IMPLICIT NULL OPTIONAL)
+
+ChargeRateChangeEventModule ::= SET(
+    tAC                         (0) IMPLICIT TAC OPTIONAL,
+    timeForEvent                (1) IMPLICIT Time OPTIONAL,
+    radioChannelProperty        (2) IMPLICIT RadioChannelProperty 
+                                             OPTIONAL,
+    changeInitiatingParty       (3) IMPLICIT ChangeInitiatingParty 
+                                             OPTIONAL,
+    tariffClass                 (4) IMPLICIT TariffClass OPTIONAL,
+    aIURRequested               (7) IMPLICIT AirInterfaceUserRate 
+                                             OPTIONAL,
+    numberOfChannelsRequested   (8) IMPLICIT NumberOfChannels 
+                                             OPTIONAL,
+    channelCodingUsed           (9) IMPLICIT ChannelCodings OPTIONAL)                    
+
+ISDNSSInvocationEventModule ::= SET(
+   trafficActivityCode          (0) IMPLICIT TrafficActivityCode
+                                             OPTIONAL,
+   incompleteCallDataIndicator  (1) IMPLICIT NULL OPTIONAL)
+
+HandOverEventModule ::= SET(
+   tAC                          (0) IMPLICIT TAC
+                                             OPTIONAL,
+   timeForEvent                 (1) IMPLICIT Time
+                                             OPTIONAL,
+   rNCidOfTargetRNC             (2) IMPLICIT TargetRNCid
+                                             OPTIONAL,
+   incompleteCallDataIndicator  (3) IMPLICIT NULL
+                                             OPTIONAL,
+   targetLocationInformation    (4) IMPLICIT LocationInformation
+                                             OPTIONAL,
+   radioChannelProperty         (5) IMPLICIT RadioChannelProperty
+                                             OPTIONAL,
+   channelCodingUsed            (6) IMPLICIT ChannelCodings
+                                             OPTIONAL,
+   bSSMAPCauseCode              (7) IMPLICIT BSSMAPCauseCode
+                                             OPTIONAL,
+   rANAPCauseCode               (8) IMPLICIT RANAPCauseCode
+ 	                                           OPTIONAL)
+
+EventModule ::= CHOICE(
+    aoCEventModule               (10) IMPLICIT AoCEventModule,
+    sSInvocationEventModule      (11) IMPLICIT SSIEventModule,
+    serviceSwitchEventModule     (12) IMPLICIT
+                                      ServiceSwitchEventModule,
+    iNServiceDataEventModule     (16) IMPLICIT
+                                      INServiceDataEventModule,
+    chargeRateChangeEventModule  (20) IMPLICIT 
+                                      ChargeRateChangeEventModule,
+    iSDNSSInvocationEventModule  (23) IMPLICIT 
+                                      ISDNSSInvocationEventModule,
+    handOverEventModule          (25) IMPLICIT
+                                      HandOverEventModule)
+
+AirInterfaceUserRate ::= ENUMERATED
+
+ (aIUR9600bps                  (1),
+  aIUR14400bps                 (2),
+  aIUR19200bps                 (3),
+  aIUR28800bps                 (5),
+  aIUR38400bps                 (6),
+  aIUR43200bps                 (7),
+  aIUR57600bps                 (8),
+  aIUR38400bps1                (9),
+  aIUR38400bps2                (10),
+  aIUR38400bps3                (11),
+  aIUR38400bps4                (12))
+
+RadioChannelProperty ::= ENUMERATED
+
+ (halfRateChannel                            (0),
+  fullRateChannel                            (1),
+  dualRateHalfRatePreferred                  (2),
+  dualRateFullRatePreferred                  (3),
+  twoFullRateChannels                        (4),
+  threeFullRateChannels                      (5),
+  fourFullRateChannels                       (6),
+  twoAssignedAirTimeSlots                    (7),
+  fourAssignedAirTimeSlots                   (8),
+  sixAssignedAirTimeSlots                    (9),
+  eightAssignedAirTimeSlots                 (10),
+  twelveAssignedAirTimeSlots                (11),
+  sixteenAssignedAirtimeSlots               (12),
+  twoDownlinkOneUplinkAssignedAirTimeSlots  (13),
+  fourDownlinkOneUplinkAssignedAirTimeSlots (14))
+
+NumberOfChannels ::= ENUMERATED
+   (oneTrafficChannel         (0),
+    twoTrafficChannels        (1),
+    threeTrafficChannels      (2),
+    fourTrafficChannels       (3),
+    fiveTrafficChannels       (4),
+    sixTrafficChannels        (5),
+    sevenTrafficChannels      (6),
+    eightTrafficChannels      (7))
+
+ChannelCodings ::= OCTET STRING (SIZE(1))
+
+ChangeInitiatingParty ::= ENUMERATED
+
+(userInitiated                  (0),
+ networkInitiated               (1))
+
+BSSMAPCauseCode ::= OCTET STRING (SIZE(1..2))
+
+CRIIndicator ::= ENUMERATED
+
+(chargeRateInformationAcknowledged       (1),
+ chargeRateInformationNotAcknowledged    (2))
+
+
+CRIToMS ::= TBCDString (SIZE(14))
+
+ChargingUnitsAddition ::= OCTET STRING (SIZE(2))
+
+Distributed ::=  OCTET STRING (SIZE(4))
+
+EventCRIToMS ::= TBCDString (SIZE(4))
+
+FreeFormatData ::= OCTET STRING (SIZE(1..160))
+
+GenericDigitsSet ::= SET SIZE (1..20) OF GenericDigits
+
+GenericDigits ::= OCTET STRING (SIZE(2..15))
+
+GenericNumbersSet ::= SET SIZE (1..20) OF GenericNumber
+
+GenericNumber ::= OCTET STRING (SIZE(3..17))
+
+LegID ::= OCTET STRING (SIZE(1))
+
+LocationInformation ::= OCTET STRING (SIZE(7))
+
+RANAPCauseCode ::= OCTET STRING (SIZE(1))
+
+SSCode ::= OCTET STRING (SIZE(1))
+
+SSRequest ::= ENUMERATED
+
+ (registration               (0),
+  erasure                    (1),
+  activation                 (2),
+  deactivation               (3),
+  interrogation              (4),
+  invoke                     (5),
+  registerPassword           (6),
+  processUSSD                (7))
+
+ServiceFeatureCode ::= OCTET STRING (SIZE(2))
+
+ServiceSwitchingType ::= ENUMERATED
+
+ (speechToFax       (0),
+  faxToSpeech       (1))
+
+Single ::=  ENUMERATED
+
+ (aPartyToBeCharged      (0),
+  bPartyToBeCharged      (1),
+  cPartyToBeCharged      (2),
+  otherPartyToBeCharged  (3)) 
+
+TargetRNCid ::= OCTET STRING (SIZE(7))
+
+TrafficActivityCode ::= OCTET STRING (SIZE(5))
+
+RoamingCallForwarding ::= SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    callingPartyNumber           (4) IMPLICIT AddressString OPTIONAL,
+    calledPartyNumber            (5) IMPLICIT AddressString OPTIONAL,
+    calledSubscriberIMSI         (6) IMPLICIT IMSI OPTIONAL,
+    mobileStationRoamingNumber   (7) IMPLICIT AddressString OPTIONAL,
+    disconnectingParty           (8) IMPLICIT DisconnectingParty 
+                                              OPTIONAL,
+    dateForStartOfCharge         (9) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge        (10) IMPLICIT Time OPTIONAL,
+    timeForStopOfCharge         (11) IMPLICIT Time OPTIONAL,
+    chargeableDuration          (12) IMPLICIT Time OPTIONAL,
+    interruptionTime            (13) IMPLICIT Time OPTIONAL,
+    timeFromRegisterSeizureToStartOfCharging
+                                (14) IMPLICIT Time OPTIONAL,
+    chargedParty                (15) IMPLICIT ChargedParty OPTIONAL,
+    originForCharging           (16) IMPLICIT ChargingOrigin OPTIONAL,
+    tariffClass                 (17) IMPLICIT TariffClass OPTIONAL,
+    tariffSwitchInd             (18) IMPLICIT TariffSwitchInd 
+                                              OPTIONAL,
+    exchangeIdentity            (19) IMPLICIT ExchangeIdentity 
+                                              OPTIONAL,
+    mSCIdentification           (20) IMPLICIT AddressString OPTIONAL,
+    outgoingRoute               (21) IMPLICIT Route OPTIONAL,
+    incomingRoute               (22) IMPLICIT Route OPTIONAL,
+    miscellaneousInformation    (23) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    subscriptionType            (24) IMPLICIT SubscriptionType
+                                              OPTIONAL,
+    callPosition                (25) IMPLICIT CallPosition OPTIONAL,
+    eosInfo                     (26) IMPLICIT EosInfo OPTIONAL,
+    internalCauseAndLoc         (27) IMPLICIT InternalCauseAndLoc 
+                                              OPTIONAL,
+    originalCalledNumber        (28) IMPLICIT AddressString OPTIONAL,
+    redirectingNumber           (29) IMPLICIT AddressString OPTIONAL,
+    redirectionCounter          (30) IMPLICIT RedirectionCounter 
+                                              OPTIONAL,
+    restartDuringCall           (31) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator 
+                                (32) IMPLICIT NULL OPTIONAL,
+    numberOfMeterPulses         (33) IMPLICIT NumberOfMeterPulses 
+                                              OPTIONAL,
+    c7ChargingMessage           (34) IMPLICIT C7ChargingMessage 
+                                              OPTIONAL,
+    c7FirstCHTMessage           (35) IMPLICIT C7CHTMessage OPTIONAL,
+    c7SecondCHTMessage          (36) IMPLICIT C7CHTMessage OPTIONAL,
+    iCIOrdered                  (37) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber         (38) IMPLICIT OutputForSubscriber
+                                              OPTIONAL,
+    lastPartialOutput           (39) IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (40) IMPLICIT PartialOutputRecNum
+                                              OPTIONAL,
+    relatedCallNumber           (41) IMPLICIT CallIDNumber OPTIONAL,
+    cUGInterlockCode            (42) IMPLICIT CUGInterlockCode 
+                                              OPTIONAL,
+    cUGOutgoingAccessIndicator  (43) IMPLICIT NULL OPTIONAL,
+    presentationAndScreeningIndicator
+                                (44) IMPLICIT
+                                     PresentationAndScreeningIndicator
+                                              OPTIONAL,
+    faultCode                   (45) IMPLICIT FaultCode OPTIONAL,
+    incompleteCallDataIndicator 
+                                (46) IMPLICIT NULL OPTIONAL,
+    multimediaInformation       (47) IMPLICIT MultimediaInformation
+                                              OPTIONAL,
+    switchIdentity              (48) IMPLICIT SwitchIdentity OPTIONAL,
+    networkCallReference        (49) IMPLICIT NetworkCallReference
+                                              OPTIONAL,
+    disconnectionDueToSystemRecovery
+                                (50) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (51) IMPLICIT NULL OPTIONAL,
+    forloppReleaseDuringCall    (52) IMPLICIT NULL OPTIONAL,
+    gSMCallReferenceNumber      (53) IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    mSCAddress                  (54) IMPLICIT AddressString
+                                              OPTIONAL,
+    carrierInformationBackward  (55) IMPLICIT TransitCarrierInfo
+                                              OPTIONAL,
+    originatingAccessISDN       (56) IMPLICIT NULL OPTIONAL,
+    originatingCarrier          (57) IMPLICIT CarrierInfo OPTIONAL,
+    originatingChargeArea       (58) IMPLICIT ChargeAreaCode
+                                              OPTIONAL,
+    terminatingAccessISDN       (59) IMPLICIT NULL OPTIONAL,
+    terminatingCarrier          (60) IMPLICIT CarrierInfo OPTIONAL,
+    terminatingChargeArea       (61) IMPLICIT ChargeAreaCode
+                                              OPTIONAL,
+    contractorNumber            (62) IMPLICIT AddressString
+                                              OPTIONAL,
+    carrierIdentificationCode   (63) IMPLICIT CarrierIdentificationCode
+                                              OPTIONAL,
+    carrierInformation          (64) IMPLICIT CarrierInformation
+                                              OPTIONAL,
+    carrierSelectionSubstitutionInformation
+                                (65) IMPLICIT CarrierSelectionSubstitutionInformation
+                                              OPTIONAL,
+    chargeNumber                (66) IMPLICIT AddressString
+                                              OPTIONAL,
+    interExchangeCarrierIndicator
+                                (67) IMPLICIT NULL OPTIONAL,
+    originatingLineInformation  (68) IMPLICIT OriginatingLineInformation
+                                              OPTIONAL,
+    userToUserInformation       (69) IMPLICIT UserToUserInformation
+                                              OPTIONAL,
+    globalCallReference         (70) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    rTCIndicator                (71) IMPLICIT NULL
+                                              OPTIONAL,
+    rTCSessionID                (72) IMPLICIT RTCSessionID
+                                              OPTIONAL,
+    rTCDefaultServiceHandling   (73) IMPLICIT RTCDefaultServiceHandling
+                                              OPTIONAL,
+    RTCFailureIndicator         (74) IMPLICIT RTCFailureIndicator
+                                              OPTIONAL,
+    RTCNotInvokedReason         (75) IMPLICIT RTCNotInvokedReason
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL,
+
+--F-- reroutingIndicator       (121) IMPLICIT NULL OPTIONAL)
+
+
+CUGInterlockCode ::= OCTET STRING (SIZE (4))
+
+CarrierIdentificationCode ::= TBCDString (SIZE(1..3))
+
+CarrierInformation ::= OCTET STRING (SIZE(1))
+
+CarrierSelectionSubstitutionInformation ::= OCTET STRING (SIZE(1))
+
+PresentationAndScreeningIndicator ::= OCTET STRING (SIZE(1))
+
+UserToUserInformation ::= OCTET STRING (SIZE(1..33))
+
+INIncomingCall ::= SET(
+    callIdentificationNumber    (0)  IMPLICIT CallIDNumber OPTIONAL,
+    switchIdentity              (1)  IMPLICIT SwitchIdentity OPTIONAL,
+    networkCallReference        (2)  IMPLICIT NetworkCallReference
+                                              OPTIONAL,
+    iNServiceTrigger            (3)  IMPLICIT INServiceTrigger 
+                                              OPTIONAL,
+    sSFChargingCase             (4)  IMPLICIT SSFChargingCase
+                                              OPTIONAL,
+    triggerData0                (5)  IMPLICIT TriggerData OPTIONAL,
+    triggerData1                (6)  IMPLICIT TriggerData OPTIONAL,
+    triggerData2                (7)  IMPLICIT TriggerData OPTIONAL,
+    triggerData3                (8)  IMPLICIT TriggerData OPTIONAL,
+    triggerData4                (9)  IMPLICIT TriggerData OPTIONAL,
+    triggerData5               (10)  IMPLICIT TriggerData OPTIONAL,
+    triggerData6               (11)  IMPLICIT TriggerData OPTIONAL,
+    triggerData7               (12)  IMPLICIT TriggerData OPTIONAL,
+    recordSequenceNumber       (13)  IMPLICIT RecordSequenceNumber 
+                                              OPTIONAL,
+    disconnectionDueToSystemRecovery
+                               (14)  IMPLICIT NULL OPTIONAL,
+    incompleteCallDataIndicator
+                               (15)  IMPLICIT NULL OPTIONAL,
+    incompleteCompositeCDRIndicator 
+                               (16)  IMPLICIT NULL OPTIONAL,
+    lastPartialOutput          (17)  IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum        (18)  IMPLICIT PartialOutputRecNum 
+                                              OPTIONAL,
+    restartDuringOutputIndicator 
+                               (19)  IMPLICIT NULL OPTIONAL,
+    restartDuringCall          (20)  IMPLICIT NULL OPTIONAL,
+    exchangeIdentity           (21)  IMPLICIT ExchangeIdentity 
+                                              OPTIONAL,
+    forloppDuringOutputIndicator
+                               (22)  IMPLICIT NULL OPTIONAL,
+    forloppReleaseDuringCall   (23)  IMPLICIT NULL OPTIONAL,
+    gSMCallReferenceNumber     (24)  IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    mSCAddress                 (25)  IMPLICIT AddressString OPTIONAL,
+    defaultCallHandling        (26)  IMPLICIT DefaultCallHandling
+                                              OPTIONAL,
+    defaultCallHandling2       (27)  IMPLICIT DefaultCallHandling
+                                              OPTIONAL,
+    levelOfCAMELService        (28)  IMPLICIT LevelOfCAMELService
+                                              OPTIONAL,
+    globalCallReference        (29)  IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    outputType                (102)  IMPLICIT OutputType OPTIONAL)
+
+DefaultCallHandling ::= ENUMERATED
+ (continueCall                    (0),
+  releaseCall                     (1))
+
+INServiceTrigger ::= OCTET STRING (SIZE (2))
+
+LevelOfCAMELService ::= BIT STRING
+
+{basic                                 (0),
+ callDurationSupervision               (1),
+ onlineCharging                        (2)}
+
+SSFChargingCase ::= OCTET STRING (SIZE(2))
+
+TriggerData ::= SEQUENCE(
+  triggerDetectionPoint (0) IMPLICIT TriggerDetectionPoint,
+  serviceKey            (1) IMPLICIT ServiceKey,
+  sCPAddress            CHOICE(
+     co-located         (2) IMPLICIT NULL,
+     pointCodeAndSubSystemNumber
+                        (3) IMPLICIT 
+                            PointCodeAndSubSystemNumber,
+     globalTitle        (4) IMPLICIT GlobalTitle,
+     globalTitleAndSubSystemNumber 
+                        (5) IMPLICIT 
+                            GlobalTitleAndSubSystemNumber)) 
+
+
+GlobalTitle ::= OCTET STRING (SIZE(4..12))
+
+GlobalTitleAndSubSystemNumber ::=
+                              OCTET STRING (SIZE(5..13))
+
+PointCodeAndSubSystemNumber ::= OCTET STRING (SIZE (4))
+
+TriggerDetectionPoint ::= ENUMERATED
+   (originatingCallAttemptAuthorized                     (1),
+    collectedInformation                                 (2),
+    analyzedInformation                                  (3),
+    originatingCallAttemptRouteSelectFailure             (4),
+    originatingCallAttemptCalledPartyBusy                (5),
+    originatingCallAttemptCalledPartyNotAnswer           (6),
+    originatingCallAttemptCalledPartyAnswer              (7),
+    originatingCallAttemptMid-CallEventDetected          (8),
+    originatingCallAttemptCallDisconnecting              (9),
+    originatingCallAttemptCallAbandon                   (10),
+    terminatingCallAttemptAuthorized                    (12),
+    terminatingCallAttemptCalledPartyBusy               (13),
+    terminatingCallAttemptNoAnswer                      (14),
+    terminatingCallAttemptAnswer                        (15),
+    terminatingCallAttemptMid-CallEventDetected         (16),
+    terminatingCallAttemptCallDisconnect                (17),
+    terminatingCallAttemptCallAbandon                   (18),
+    terminatingCallAttemptCallReAnswer                 (247),
+    terminatingCallAttemptCallSuspended                (248),
+    terminatingCallAttemptCalledPartyNotReachable      (249),
+    terminatingCallAttemptAlerting                     (250),
+    terminatingCallAttemptRouteSelectFailure           (251),
+    originatingCallAttemptCalledPartyReAnswer          (252),
+    originatingCallAttemptCallSuspended                (253),
+    originatingCallAttemptCalledPartyNotReachable      (254),
+    originatingCallAttemptAlerting                     (255))
+
+
+UMTSGSMPLMNCallDataRecord  ::= (0) IMPLICIT SEQUENCE(
+    u CHOICE(
+        transit                (0)  IMPLICIT Transit,
+        mSOriginating          (1)  IMPLICIT MSOriginating,
+        roamingCallForwarding  (2)  IMPLICIT RoamingCallForwarding,
+        callForwarding         (3)  IMPLICIT CallForwarding,
+        mSTerminating          (4)  IMPLICIT MSTerminating,
+        mSOriginatingSMSinMSC
+                               (5)  IMPLICIT MSOriginatingSMSinMSC,
+        mSOriginatingSMSinSMS-IWMSC
+                               (6)  IMPLICIT
+                                    MSOriginatingSMSinSMS-IWMSC,
+        mSTerminatingSMSinMSC  (7)  IMPLICIT MSTerminatingSMSinMSC,
+        mSTerminatingSMSinSMS-GMSC
+                               (8)  IMPLICIT
+                                    MSTerminatingSMSinSMS-GMSC,
+        sSProcedure            (9)  IMPLICIT SSProcedure,
+        transitINOutgoingCall 
+                              (13)  IMPLICIT TransitINOutgoingCall,
+        iNIncomingCall        (14)  IMPLICIT INIncomingCall,
+        iNOutgoingCall        (15)  IMPLICIT INOutgoingCall,
+        iSDNOriginating       (17)  IMPLICIT ISDNOriginating,
+        iSDNCallForwarding    (18)  IMPLICIT ISDNCallForwarding,
+        iSDNSSProcedure       (19)  IMPLICIT ISDNSSProcedure,
+        sCFChargingOutput     (21)  IMPLICIT SCFChargingOutput,
+        locationServices      (24)  IMPLICIT LocationServices)
+   )
+
+CallForwarding ::= SET(
+    tAC                          (0) IMPLICIT TAC  OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    callingPartyNumber           (4) IMPLICIT AddressString OPTIONAL,
+    calledPartyNumber            (5) IMPLICIT AddressString  OPTIONAL,
+    originalCalledNumber         (6) IMPLICIT AddressString  OPTIONAL,
+    redirectingNumber            (7) IMPLICIT AddressString OPTIONAL,
+    redirectionCounter           (8) IMPLICIT RedirectionCounter 
+                                              OPTIONAL,
+    redirectingSPN               (9) IMPLICIT AddressString OPTIONAL,
+    redirectingIMSI             (10) IMPLICIT IMSI OPTIONAL,
+    mobileStationRoamingNumber  (11) IMPLICIT AddressString OPTIONAL,
+    disconnectingParty          (12) IMPLICIT DisconnectingParty 
+                                              OPTIONAL,
+    dateForStartOfCharge        (13) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge        (14) IMPLICIT Time OPTIONAL,
+    timeForStopOfCharge         (15) IMPLICIT Time OPTIONAL,
+    chargeableDuration          (16) IMPLICIT Time OPTIONAL,
+    interruptionTime            (17) IMPLICIT Time OPTIONAL,
+    timeFromRegisterSeizureToStartOfCharging
+                                (18) IMPLICIT Time OPTIONAL,
+    chargedParty                (19) IMPLICIT ChargedParty OPTIONAL,
+    originForCharging           (20) IMPLICIT ChargingOrigin 
+                                              OPTIONAL,
+    tariffClass                 (21) IMPLICIT TariffClass OPTIONAL,
+    tariffSwitchInd             (22) IMPLICIT TariffSwitchInd OPTIONAL,
+    exchangeIdentity            (23) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    mSCIdentification           (24) IMPLICIT AddressString OPTIONAL,
+    outgoingRoute               (25) IMPLICIT Route OPTIONAL,
+    incomingRoute               (26) IMPLICIT Route OPTIONAL,
+    miscellaneousInformation    (27) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    originatingLocationNumber   (28) IMPLICIT AddressString OPTIONAL,
+    callPosition                (29) IMPLICIT CallPosition OPTIONAL,
+    eosInfo                     (30) IMPLICIT EosInfo OPTIONAL,
+    internalCauseAndLoc         (31) IMPLICIT InternalCauseAndLoc 
+                                              OPTIONAL,
+    restartDuringCall           (32) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator
+                                (33) IMPLICIT NULL OPTIONAL,
+    numberOfMeterPulses         (34) IMPLICIT NumberOfMeterPulses 
+                                              OPTIONAL,
+    c7ChargingMessage           (35) IMPLICIT C7ChargingMessage 
+                                              OPTIONAL,
+    c7FirstCHTMessage           (36) IMPLICIT C7CHTMessage OPTIONAL,
+    c7SecondCHTMessage          (37) IMPLICIT C7CHTMessage OPTIONAL,
+    iCIOrdered                  (38) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber         (39) IMPLICIT OutputForSubscriber
+                                              OPTIONAL,
+    iNMarkingOfMS               (40) IMPLICIT INMarkingOfMS OPTIONAL,
+    lastPartialOutput           (41) IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (42) IMPLICIT PartialOutputRecNum 
+                                              OPTIONAL,
+    relatedCallNumber           (43) IMPLICIT CallIDNumber OPTIONAL,
+    cUGInterlockCode            (44) IMPLICIT CUGInterlockCode 
+                                              OPTIONAL,
+    cUGIndex                    (45) IMPLICIT CUGIndex OPTIONAL,
+    cUGOutgoingAccessUsed       (46) IMPLICIT NULL OPTIONAL,
+    cUGOutgoingAccessIndicator  (47) IMPLICIT NULL OPTIONAL,
+    regionalServiceUsed         (48) IMPLICIT RegionalServiceUsed 
+                                              OPTIONAL,
+    regionDependentChargingOrigin
+                                (49) IMPLICIT ChargingOrigin OPTIONAL,
+    presentationAndScreeningIndicator
+                                (50) IMPLICIT 
+                                     PresentationAndScreeningIndicator
+                                              OPTIONAL,
+    faultCode                   (51) IMPLICIT FaultCode OPTIONAL,
+    subscriptionType            (52) IMPLICIT SubscriptionType
+                                              OPTIONAL,
+    incompleteCallDataIndicator
+                                (53) IMPLICIT NULL OPTIONAL,
+    incompleteCompositeCDRIndicator
+                                (54) IMPLICIT NULL OPTIONAL,
+    switchIdentity              (56) IMPLICIT SwitchIdentity OPTIONAL,
+    networkCallReference        (57) IMPLICIT NetworkCallReference
+                                              OPTIONAL,
+    disconnectionDueToSystemRecovery
+                                (58) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (59) IMPLICIT NULL OPTIONAL,
+    forloppReleaseDuringCall    (60) IMPLICIT NULL OPTIONAL,
+    translatedNumber            (61) IMPLICIT AddressString OPTIONAL,
+    cAMELInitiatedCallForwarding
+                                (62) IMPLICIT NULL OPTIONAL,
+    bCSMTDPData1                (63) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData2                (64) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData3                (65) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData4                (66) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData5                (67) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData6                (68) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData7                (69) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData8                (70) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData9                (71) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData10               (72) IMPLICIT CAMELTDPData OPTIONAL,
+    gSMCallReferenceNumber      (73) IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    mSCAddress                  (74) IMPLICIT AddressString
+                                              OPTIONAL,
+    aCMChargingIndicator        (75) IMPLICIT ChargingIndicator
+                                              OPTIONAL,
+    aNMChargingIndicator        (76) IMPLICIT ChargingIndicator
+                                              OPTIONAL,
+    carrierInformationBackward  (77) IMPLICIT TransitCarrierInfo
+                                              OPTIONAL,
+    chargeInformation           (78) IMPLICIT ChargeInformation
+                                              OPTIONAL,
+    disconnectionDate           (79) IMPLICIT Date OPTIONAL,
+    disconnectionTime           (80) IMPLICIT Time OPTIONAL,
+    exitPOICA                   (81) IMPLICIT ChargeAreaCode OPTIONAL,
+    originatingCarrier          (82) IMPLICIT CarrierInfo OPTIONAL,
+    originatingChargeArea       (83) IMPLICIT ChargeAreaCode OPTIONAL,
+    terminatingAccessISDN       (84) IMPLICIT NULL OPTIONAL,
+    terminatingCarrier          (85) IMPLICIT CarrierInfo OPTIONAL,
+    terminatingChargeArea       (86) IMPLICIT ChargeAreaCode OPTIONAL,
+    terminatingMobileUserClass1 (87) IMPLICIT MobileUserClass1 
+                                              OPTIONAL,
+    terminatingMobileUserClass2 (88) IMPLICIT MobileUserClass2                                           
+                                              OPTIONAL,
+    terminatingUserClass        (89) IMPLICIT UserClass OPTIONAL,
+    originatingAccessISDN       (90) IMPLICIT NULL OPTIONAL,
+    contractorNumber            (91) IMPLICIT AddressString
+                                              OPTIONAL,
+    calledPartyMNPInfo          (92) IMPLICIT AddressString
+                                              OPTIONAL,
+    carrierIdentificationCode   (93) IMPLICIT CarrierIdentificationCode
+                                              OPTIONAL,
+    carrierInformation          (94) IMPLICIT CarrierInformation
+                                              OPTIONAL,
+    carrierSelectionSubstitutionInformation
+                                (95) IMPLICIT CarrierSelectionSubstitutionInformation
+                                              OPTIONAL,
+    chargeNumber                (96) IMPLICIT AddressString
+                                              OPTIONAL,
+    interExchangeCarrierIndicator
+                                (97) IMPLICIT NULL OPTIONAL,
+    originatingLineInformation  (98) IMPLICIT OriginatingLineInformation
+                                              OPTIONAL,
+    optimalRoutingType          (99) IMPLICIT OptimalRoutingType
+                                              OPTIONAL,
+    optimalRoutingInvocationFailed
+                               (100) IMPLICIT NULL OPTIONAL,
+    userToUserInformation      (101) IMPLICIT UserToUserInformation
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL,
+    multimediaInformation      (103) IMPLICIT MultimediaInformation
+                                              OPTIONAL,
+    globalCallReference        (104) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    rTCIndicator               (105) IMPLICIT NULL
+                                              OPTIONAL,
+    rTCSessionID               (106) IMPLICIT RTCSessionID
+                                              OPTIONAL,
+    rTCDefaultServiceHandling  (107) IMPLICIT RTCDefaultServiceHandling
+                                              OPTIONAL,
+    rTCFailureIndicator        (108) IMPLICIT RTCFailureIndicator
+                                              OPTIONAL,
+    rTCNotInvokedReason        (109) IMPLICIT RTCNotInvokedReason
+                                              OPTIONAL,
+
+--F-- originatedCode            (55) IMPLICIT OriginatedCode
+                                                         OPTIONAL,
+--F-- reroutingIndicator       (121) IMPLICIT NULL OPTIONAL)
+
+
+INOutgoingCall ::= SET(
+    callIdentificationNumber    (0)  IMPLICIT CallIDNumber OPTIONAL,
+    switchIdentity              (1)  IMPLICIT SwitchIdentity OPTIONAL,
+    networkCallReference        (2)  IMPLICIT NetworkCallReference
+                                              OPTIONAL,
+    iNServiceTrigger            (3)  IMPLICIT INServiceTrigger
+                                              OPTIONAL,
+    sSFChargingCase             (4)  IMPLICIT SSFChargingCase
+                                              OPTIONAL,
+    triggerData0                (5)  IMPLICIT TriggerData OPTIONAL,
+    triggerData1                (6)  IMPLICIT TriggerData OPTIONAL,
+    triggerData2                (7)  IMPLICIT TriggerData OPTIONAL,
+    triggerData3                (8)  IMPLICIT TriggerData OPTIONAL,
+    triggerData4                (9)  IMPLICIT TriggerData OPTIONAL,
+    triggerData5               (10)  IMPLICIT TriggerData OPTIONAL,
+    triggerData6               (11)  IMPLICIT TriggerData OPTIONAL,
+    triggerData7               (12)  IMPLICIT TriggerData OPTIONAL,
+    recordSequenceNumber       (13)  IMPLICIT RecordSequenceNumber 
+                                              OPTIONAL,
+    disconnectionDueToSystemRecovery
+                               (14)  IMPLICIT NULL OPTIONAL,
+    incompleteCallDataIndicator
+                               (15)  IMPLICIT NULL OPTIONAL,
+    incompleteCompositeCDRIndicator 
+                               (16)  IMPLICIT NULL OPTIONAL,
+    lastPartialOutput          (17)  IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum        (18)  IMPLICIT PartialOutputRecNum 
+                                              OPTIONAL,
+    restartDuringOutputIndicator 
+                               (19)  IMPLICIT NULL OPTIONAL,
+    restartDuringCall          (20)  IMPLICIT NULL OPTIONAL,
+    exchangeIdentity           (21)  IMPLICIT ExchangeIdentity 
+                                              OPTIONAL,
+    forloppDuringOutputIndicator
+                               (22)  IMPLICIT NULL OPTIONAL,
+    forloppReleaseDuringCall   (23)  IMPLICIT NULL OPTIONAL,
+    gSMCallReferenceNumber     (24)  IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    mSCAddress                 (25)  IMPLICIT AddressString OPTIONAL,
+    defaultCallHandling        (26)  IMPLICIT DefaultCallHandling
+                                              OPTIONAL,
+    defaultCallHandling2       (27)  IMPLICIT DefaultCallHandling
+                                              OPTIONAL,
+    levelOfCAMELService        (28)  IMPLICIT LevelOfCAMELService
+                                              OPTIONAL,
+    gsmSCFInitiatedCallIndicator
+                               (29)  IMPLICIT NULL OPTIONAL,
+    globalCallReference        (30)  IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    outputType                (102)  IMPLICIT OutputType OPTIONAL)
+
+ISDNCallForwarding ::= SET(
+    trafficActivityCode          (0) IMPLICIT TrafficActivityCode
+                                              OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber 
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    chargedCallingPartyNumber    (4) IMPLICIT AddressString OPTIONAL,
+    calledPartyNumber            (5) IMPLICIT AddressString OPTIONAL,
+    disconnectingParty           (6) IMPLICIT DisconnectingParty 
+                                              OPTIONAL,
+    dateForStartOfCharge         (7) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge         (8) IMPLICIT Time OPTIONAL,
+    timeForStopOfCharge          (9) IMPLICIT Time OPTIONAL,
+    chargeableDuration          (10) IMPLICIT Time OPTIONAL,
+    interruptionTime            (11) IMPLICIT Time OPTIONAL,
+    tariffClass                 (12) IMPLICIT TariffClass OPTIONAL,
+    tariffSwitchInd             (13) IMPLICIT TariffSwitchInd
+                                              OPTIONAL,
+    exchangeIdentity            (14) IMPLICIT ExchangeIdentity 
+                                              OPTIONAL,
+    outgoingRoute               (15) IMPLICIT Route OPTIONAL,
+    callPosition                (16) IMPLICIT CallPosition OPTIONAL,
+    originalCalledNumber        (17) IMPLICIT AddressString OPTIONAL,
+    redirectingNumber           (18) IMPLICIT AddressString OPTIONAL,
+    restartDuringCall           (19) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator
+                                (20) IMPLICIT NULL OPTIONAL,
+    lastPartialOutput           (21) IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (22) IMPLICIT PartialOutputRecNum 
+                                              OPTIONAL,
+    cUGInterlockCode            (23) IMPLICIT CUGInterlockCode 
+                                              OPTIONAL,
+    cUGIndex                    (24) IMPLICIT CUGIndex OPTIONAL,
+    presentationAndScreeningIndicator
+                                (25) IMPLICIT 
+                                     PresentationAndScreeningIndicator
+                                              OPTIONAL,
+    incompleteCallDataIndicator (26) IMPLICIT NULL OPTIONAL,
+    networkCallReference        (27) IMPLICIT NetworkCallReference OPTIONAL,
+    disconnectionDueToSystemRecovery
+                                (28) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (29) IMPLICIT NULL OPTIONAL,
+    causeCode                   (30) IMPLICIT CauseCode OPTIONAL,
+    locationCode                (31) IMPLICIT LocationCode OPTIONAL,
+    networkProvidedCallingPartyNumber
+                                (32) IMPLICIT AddressString OPTIONAL,
+    callingPartyNumber          (33) IMPLICIT AddressString OPTIONAL,
+    calledPartyMNPInfo          (34) IMPLICIT AddressString OPTIONAL,
+    forloppReleaseDuringCall    (35) IMPLICIT NULL OPTIONAL,
+    chargedParty                (36) IMPLICIT ChargedParty OPTIONAL,
+    callAttemptIndicator        (37) IMPLICIT NULL OPTIONAL,
+    flexibleCounter1            (38) IMPLICIT Counter OPTIONAL,
+    flexibleCounter2            (39) IMPLICIT Counter OPTIONAL,
+    flexibleCounter3            (40) IMPLICIT Counter OPTIONAL,
+    flexibleCounter4            (41) IMPLICIT Counter OPTIONAL,
+    flexibleCounter5            (42) IMPLICIT Counter OPTIONAL,
+    flexibleCounter6            (43) IMPLICIT Counter OPTIONAL,
+    flexibleCounter7            (44) IMPLICIT Counter OPTIONAL,
+    flexibleCounter8            (45) IMPLICIT Counter OPTIONAL,
+    callAttemptState            (46) IMPLICIT CallAttemptState 
+                                              OPTIONAL,
+    typeOfSignalling            (47) IMPLICIT TypeOfSignalling 
+                                              OPTIONAL,
+    typeOfCalledSubscriber      (48) IMPLICIT TypeOfCalledSubscriber 
+                                              OPTIONAL,
+    endToEndAccessDataMap       (49) IMPLICIT EndToEndAccessDataMap 
+                                              OPTIONAL,
+    userToUserService1Information
+                                (50) IMPLICIT
+                                     UserToUserService1Information 
+                                              OPTIONAL,
+    switchIdentity              (51) IMPLICIT SwitchIdentity OPTIONAL,
+    aoCCurrencyAmountSentToUser (52) IMPLICIT AoCCurrencyAmountSent
+                                              OPTIONAL,
+    globalCallReference         (53) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+ISDNOriginating ::= SET(
+    trafficActivityCode          (0) IMPLICIT TrafficActivityCode
+                                              OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber 
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    chargedCallingPartyNumber    (4) IMPLICIT AddressString OPTIONAL,
+    calledPartyNumber            (5) IMPLICIT AddressString OPTIONAL,
+    disconnectingParty           (6) IMPLICIT DisconnectingParty 
+                                              OPTIONAL,
+    dateForStartOfCharge         (7) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge         (8) IMPLICIT Time OPTIONAL,
+    timeForStopOfCharge          (9) IMPLICIT Time OPTIONAL,
+    chargeableDuration          (10) IMPLICIT Time OPTIONAL,
+    interruptionTime            (11) IMPLICIT Time OPTIONAL,
+    tariffClass                 (12) IMPLICIT TariffClass OPTIONAL,
+    tariffSwitchInd             (13) IMPLICIT TariffSwitchInd
+                                              OPTIONAL,
+    exchangeIdentity            (14) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    outgoingRoute               (15) IMPLICIT Route OPTIONAL,
+    callPosition                (16) IMPLICIT CallPosition OPTIONAL,
+    restartDuringCall           (17) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator
+                                (18) IMPLICIT NULL OPTIONAL,
+    lastPartialOutput           (19) IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (20) IMPLICIT PartialOutputRecNum 
+                                              OPTIONAL,
+    cUGInterlockCode            (21) IMPLICIT CUGInterlockCode
+                                              OPTIONAL,
+    cUGIndex                    (22) IMPLICIT CUGIndex OPTIONAL,
+    presentationAndScreeningIndicator
+                                (23) IMPLICIT 
+                                     PresentationAndScreeningIndicator
+                                              OPTIONAL,
+    incompleteCallDataIndicator (24) IMPLICIT NULL OPTIONAL,
+    networkCallReference        (25) IMPLICIT NetworkCallReference OPTIONAL,
+    disconnectionDueToSystemRecovery
+                                (26) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (27) IMPLICIT NULL OPTIONAL,
+    causeCode                   (28) IMPLICIT CauseCode OPTIONAL,
+    locationCode                (29) IMPLICIT LocationCode OPTIONAL,
+    networkProvidedCallingPartyNumber
+                                (30) IMPLICIT AddressString OPTIONAL,
+    calledPartyMNPInfo          (31) IMPLICIT AddressString OPTIONAL,
+    callingPartyNumberSpecialArrangementInd
+                                (32) IMPLICIT NULL OPTIONAL,
+    userProvidedCallingPartyNumber
+                                (33) IMPLICIT AddressString OPTIONAL,
+    forloppReleaseDuringCall    (34) IMPLICIT NULL OPTIONAL,
+    chargedParty                (35) IMPLICIT ChargedParty OPTIONAL,
+    callAttemptIndicator        (36) IMPLICIT NULL OPTIONAL,
+    flexibleCounter1            (37) IMPLICIT Counter OPTIONAL,
+    flexibleCounter2            (38) IMPLICIT Counter OPTIONAL,
+    flexibleCounter3            (39) IMPLICIT Counter OPTIONAL,
+    flexibleCounter4            (40) IMPLICIT Counter OPTIONAL,
+    flexibleCounter5            (41) IMPLICIT Counter OPTIONAL,
+    flexibleCounter6            (42) IMPLICIT Counter OPTIONAL,
+    flexibleCounter7            (43) IMPLICIT Counter OPTIONAL,
+    flexibleCounter8            (44) IMPLICIT Counter OPTIONAL,
+    callAttemptState            (45) IMPLICIT CallAttemptState 
+                                              OPTIONAL,
+    typeOfSignalling            (46) IMPLICIT TypeOfSignalling 
+                                              OPTIONAL,
+    typeOfCalledSubscriber      (47) IMPLICIT TypeOfCalledSubscriber 
+                                              OPTIONAL,
+    endToEndAccessDataMap       (48) IMPLICIT EndToEndAccessDataMap 
+                                              OPTIONAL,
+    userToUserService1Information
+                                (49) IMPLICIT 
+                                     UserToUserService1Information 
+                                              OPTIONAL,
+    switchIdentity              (50) IMPLICIT SwitchIdentity OPTIONAL,
+    aoCCurrencyAmountSentToUser (51) IMPLICIT AoCCurrencyAmountSent
+                                              OPTIONAL,
+    globalCallReference         (52) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+ISDNSSProcedure ::= SET(
+    trafficActivityCode         (0)  IMPLICIT TrafficActivityCode
+                                              OPTIONAL,
+    callIdentificationNumber    (1)  IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber        (2)  IMPLICIT RecordSequenceNumber 
+                                              OPTIONAL,
+    typeOfCallingSubscriber     (3)  IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    dateForStartOfCharge        (4)  IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge        (5)  IMPLICIT Time OPTIONAL,
+    tariffClass                 (6)  IMPLICIT TariffClass OPTIONAL,
+    exchangeIdentity            (7)  IMPLICIT ExchangeIdentity 
+                                              OPTIONAL,
+    restartDuringOutputIndicator
+                                (8)  IMPLICIT NULL OPTIONAL,
+    incompleteCallDataIndicator 
+                                (9)  IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (10) IMPLICIT NULL OPTIONAL,
+    servedSubscriberNumber      (11) IMPLICIT AddressString OPTIONAL,
+    chargedParty                (12) IMPLICIT ChargedParty OPTIONAL,
+    switchIdentity              (13) IMPLICIT SwitchIdentity OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+LocationServices ::= SET(
+    tAC                         (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber    (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber        (2) IMPLICIT RecordSequenceNumber 
+                                             OPTIONAL,
+    typeOfCallingSubscriber     (3) IMPLICIT TypeOfCallingSubscriber
+                                             OPTIONAL,
+    targetMSISDN                (4) IMPLICIT AddressString OPTIONAL,
+    targetIMSI                  (5) IMPLICIT IMSI OPTIONAL,
+    targetIMEI                  (6) IMPLICIT IMEI OPTIONAL,
+    dateForStartOfCharge        (7) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge        (8) IMPLICIT Time OPTIONAL,
+    exchangeIdentity            (9) IMPLICIT ExchangeIdentity 
+                                             OPTIONAL,
+    mSCIdentification          (10) IMPLICIT AddressString OPTIONAL,
+    miscellaneousInformation   (11) IMPLICIT MiscellaneousInformation
+                                             OPTIONAL,
+    restartDuringOutputIndicator
+                               (12) IMPLICIT NULL OPTIONAL,
+    iCIOrdered                 (13) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber        (14) IMPLICIT OutputForSubscriber 
+                                             OPTIONAL,
+    incompleteCallDataIndicator
+                               (15) IMPLICIT NULL OPTIONAL,
+    switchIdentity             (16) IMPLICIT SwitchIdentity OPTIONAL,
+    networkCallReference       (17) IMPLICIT NetworkCallReference
+                                             OPTIONAL,
+    forloppDuringOutputIndicator
+                               (18) IMPLICIT NULL OPTIONAL,
+    positioningDelivery        (19) IMPLICIT PositioningDelivery
+                                             OPTIONAL,
+    lCSClientIdentity          (20) IMPLICIT AddressString OPTIONAL,
+    lCSClientType              (21) IMPLICIT LCSClientType OPTIONAL,
+    locationEstimate           (22) IMPLICIT LocationEstimate 
+                                             OPTIONAL,
+    ageOfLocationEstimate      (23) IMPLICIT AgeOfLocationEstimate
+                                             OPTIONAL,
+    subscriberState            (24) IMPLICIT SubscriberState OPTIONAL,
+    mLCAddress                 (25) IMPLICIT AddressString OPTIONAL,
+    decipheringKeys            (26) IMPLICIT DecipheringKeys OPTIONAL,
+    typeOfLocationRequest      (27) IMPLICIT TypeOfLocationRequest
+                                             OPTIONAL,
+    firstTargetLocationInformation
+                               (28) IMPLICIT LocationInformation
+                                             OPTIONAL,
+    horizontalAccuracy         (29) IMPLICIT LCSAccuracy OPTIONAL,
+    responseTimeCategory       (30) IMPLICIT ResponseTimeCategory
+                                             OPTIONAL,
+    verticalAccuracy           (31) IMPLICIT LCSAccuracy OPTIONAL,
+    verticalCoordinateRequest  (32) IMPLICIT NULL OPTIONAL,
+    unsuccessfulPositioningDataReason
+                               (33) IMPLICIT
+                                  UnsuccessfulPositioningDataReason
+                                             OPTIONAL,
+    lCSDeferredEventType       (34) IMPLICIT LCSDeferredEventType
+                                             OPTIONAL,
+    targetIMEISV               (35) IMPLICIT IMEISV OPTIONAL,
+    globalCallReference        (36) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    outputType                (102) IMPLICIT OutputType OPTIONAL)
+
+MSOriginating ::= SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    callingPartyNumber           (4) IMPLICIT AddressString OPTIONAL,
+    callingSubscriberIMSI        (5) IMPLICIT IMSI OPTIONAL,
+    callingSubscriberIMEI        (6) IMPLICIT IMEI OPTIONAL,
+    calledPartyNumber            (7) IMPLICIT AddressString OPTIONAL,
+    disconnectingParty           (8) IMPLICIT DisconnectingParty
+                                              OPTIONAL,
+    dateForStartOfCharge         (9) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge        (10) IMPLICIT Time OPTIONAL,
+    timeForStopOfCharge         (11) IMPLICIT Time OPTIONAL,
+    chargeableDuration          (12) IMPLICIT Time OPTIONAL,
+    interruptionTime            (13) IMPLICIT Time OPTIONAL,
+    timeFromRegisterSeizureToStartOfCharging
+                                (14) IMPLICIT Time OPTIONAL,
+    chargedParty                (15) IMPLICIT ChargedParty OPTIONAL,
+    originForCharging           (16) IMPLICIT ChargingOrigin OPTIONAL,
+    chargingCase                (17) IMPLICIT ChargingCase OPTIONAL,
+    tariffClass                 (18) IMPLICIT TariffClass OPTIONAL,
+    tariffSwitchInd             (19) IMPLICIT TariffSwitchInd
+                                              OPTIONAL,
+    exchangeIdentity            (20) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    mSCIdentification           (21) IMPLICIT AddressString OPTIONAL,
+    outgoingRoute               (22) IMPLICIT Route OPTIONAL,
+    incomingRoute               (23) IMPLICIT Route OPTIONAL,
+    miscellaneousInformation    (24) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    originatingLocationNumber   (25) IMPLICIT AddressString OPTIONAL,
+    timeForTCSeizureCalling     (26) IMPLICIT Time OPTIONAL,
+    firstCallingLocationInformation
+                                (27) IMPLICIT LocationInformation
+                                              OPTIONAL,
+    lastCallingLocationInformation
+                                (28) IMPLICIT LocationInformation
+                                              OPTIONAL,
+    teleServiceCode             (29) IMPLICIT TeleServiceCode
+                                              OPTIONAL,
+    bearerServiceCode           (30) IMPLICIT BearerServiceCode
+                                              OPTIONAL,
+    transparencyIndicator       (31) IMPLICIT TransparencyIndicator
+                                              OPTIONAL,
+    firstRadioChannelUsed       (32) IMPLICIT FirstRadioChannelUsed
+                                              OPTIONAL,
+    callPosition                (33) IMPLICIT CallPosition OPTIONAL,
+    eosInfo                     (34) IMPLICIT EosInfo OPTIONAL,
+    internalCauseAndLoc         (35) IMPLICIT InternalCauseAndLoc
+                                              OPTIONAL,
+    restartDuringCall           (36) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator
+                                (37) IMPLICIT NULL OPTIONAL,
+    numberOfMeterPulses         (38) IMPLICIT NumberOfMeterPulses
+                                              OPTIONAL,
+    c7ChargingMessage           (39) IMPLICIT C7ChargingMessage
+                                              OPTIONAL,
+    c7FirstCHTMessage           (40) IMPLICIT C7CHTMessage OPTIONAL,
+    c7SecondCHTMessage          (41) IMPLICIT C7CHTMessage OPTIONAL,
+    calledPartyMNPInfo          (42) IMPLICIT AddressString
+                                              OPTIONAL,
+    carrierIdentificationCode   (43) IMPLICIT CarrierIdentificationCode
+                                              OPTIONAL,
+    dTMFUsed                    (44) IMPLICIT NULL OPTIONAL,
+    iCIOrdered                  (45) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber         (46) IMPLICIT OutputForSubscriber
+                                              OPTIONAL,
+    iNMarkingOfMS               (47) IMPLICIT INMarkingOfMS OPTIONAL,
+    lastPartialOutput           (48) IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (49) IMPLICIT PartialOutputRecNum
+                                              OPTIONAL,
+    cUGInterlockCode            (50) IMPLICIT CUGInterlockCode
+                                              OPTIONAL,
+    cUGIndex                    (51) IMPLICIT CUGIndex OPTIONAL,
+    cUGOutgoingAccessUsed       (52) IMPLICIT NULL OPTIONAL,
+    cUGOutgoingAccessIndicator  (53) IMPLICIT NULL OPTIONAL,
+    regionalServiceUsed         (54) IMPLICIT RegionalServiceUsed
+                                              OPTIONAL,
+    regionDependentChargingOrigin
+                                (55) IMPLICIT ChargingOrigin OPTIONAL,
+    sSCode                      (56) IMPLICIT SSCode OPTIONAL,
+    channelAllocationPriorityLevel
+                                (57) IMPLICIT
+                                     ChannelAllocationPriorityLevel
+                                              OPTIONAL,
+    radioChannelProperty        (58) IMPLICIT RadioChannelProperty
+                                              OPTIONAL,
+    faultCode                   (59) IMPLICIT FaultCode OPTIONAL,
+    intermediateRate            (60) IMPLICIT IntermediateRate
+                                              OPTIONAL,
+    firstAssignedSpeechCoderVersion
+                                (61) IMPLICIT SpeechCoderVersion
+                                              OPTIONAL,
+    speechCoderPreferenceList   (62) IMPLICIT SpeechCoderPreferenceList
+                                              OPTIONAL,
+    subscriptionType            (63) IMPLICIT SubscriptionType
+                                              OPTIONAL,
+    incompleteCallDataIndicator
+                                (64) IMPLICIT NULL OPTIONAL,
+    incompleteCompositeCDRIndicator
+                                (65) IMPLICIT NULL OPTIONAL,
+    switchIdentity              (67) IMPLICIT SwitchIdentity OPTIONAL,
+    networkCallReference        (68) IMPLICIT NetworkCallReference
+                                              OPTIONAL,
+    frequencyBandSupported      (69) IMPLICIT FrequencyBandSupported
+                                              OPTIONAL,
+    disconnectionDueToSystemRecovery
+                                (70) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (71) IMPLICIT NULL OPTIONAL,
+    forloppReleaseDuringCall    (72) IMPLICIT NULL OPTIONAL,
+    accountCode                 (73) IMPLICIT AccountCode OPTIONAL,
+    translatedNumber            (74) IMPLICIT AddressString OPTIONAL,
+    bCSMTDPData1                (75) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData2                (76) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData3                (77) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData4                (78) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData5                (79) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData6                (80) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData7                (81) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData8                (82) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData9                (83) IMPLICIT CAMELTDPData OPTIONAL,
+    bCSMTDPData10               (84) IMPLICIT CAMELTDPData OPTIONAL,
+    gSMCallReferenceNumber      (85) IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    mSCAddress                  (86) IMPLICIT AddressString OPTIONAL,
+    eMLPPPriorityLevel          (87) IMPLICIT EMLPPPriorityLevel
+                                              OPTIONAL,
+    positionAccuracy            (88) IMPLICIT PositionAccuracy
+                                              OPTIONAL,
+    userTerminalPosition        (89) IMPLICIT UserTerminalPosition
+                                              OPTIONAL,
+    acceptableChannelCodings    (90) IMPLICIT ChannelCodings
+                                              OPTIONAL,
+    incomingAssignedRoute       (91) IMPLICIT Route OPTIONAL,
+    channelCodingUsed           (92) IMPLICIT ChannelCodings
+                                              OPTIONAL,
+    rANAPCauseCode              (93) IMPLICIT RANAPCauseCode OPTIONAL,
+    gsmSCFAddress               (94) IMPLICIT AddressString OPTIONAL,
+    fNURRequested               (95) IMPLICIT FixedNetworkUserRate
+                                              OPTIONAL,
+    aIURRequested               (96) IMPLICIT AirInterfaceUserRate
+                                              OPTIONAL,
+    numberOfChannelsRequested   (97) IMPLICIT NumberOfChannels
+                                              OPTIONAL,
+    bSSMAPCauseCode             (98) IMPLICIT BSSMAPCauseCode
+                                              OPTIONAL,
+    multimediaCall              (99) IMPLICIT NULL OPTIONAL,
+    guaranteedBitRate          (100) IMPLICIT BitRate
+                                              OPTIONAL,
+    trafficClass               (101) IMPLICIT TrafficClass OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL,
+    rNCidOfFirstRNC            (103) IMPLICIT TargetRNCid OPTIONAL,
+    maxBitRateDownlink         (104) IMPLICIT BitRate OPTIONAL,
+    maxBitRateUplink           (105) IMPLICIT BitRate OPTIONAL,
+    transferDelay              (106) IMPLICIT TransferDelay
+                                              OPTIONAL,
+    deliveryOfErroneousSDU1    (107) IMPLICIT DeliveryOfErroneousSDU
+                                              OPTIONAL,
+    deliveryOfErroneousSDU2    (108) IMPLICIT DeliveryOfErroneousSDU
+                                              OPTIONAL,
+    deliveryOfErroneousSDU3    (109) IMPLICIT DeliveryOfErroneousSDU
+                                              OPTIONAL,
+    residualBitErrorRatio1     (110) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    residualBitErrorRatio2     (111) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    residualBitErrorRatio3     (112) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    sDUErrorRatio1             (113) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    sDUErrorRatio2             (114) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    sDUErrorRatio3             (115) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    aCMChargingIndicator       (116) IMPLICIT ChargingIndicator
+                                              OPTIONAL,
+    aNMChargingIndicator       (117) IMPLICIT ChargingIndicator
+                                              OPTIONAL,
+    carrierInformationBackward (118) IMPLICIT TransitCarrierInfo
+                                              OPTIONAL,
+    chargeInformation          (119) IMPLICIT ChargeInformation
+                                              OPTIONAL,
+    disconnectionDate          (120) IMPLICIT Date OPTIONAL,
+    disconnectionTime          (124) IMPLICIT Time OPTIONAL,
+    originatingCarrier         (125) IMPLICIT CarrierInfo OPTIONAL,
+    originatingChargeArea      (126) IMPLICIT ChargeAreaCode
+                                               OPTIONAL,
+    tDSCounter                 (127) IMPLICIT Counter OPTIONAL,
+    terminatingAccessISDN      (128) IMPLICIT NULL OPTIONAL,
+    terminatingCarrier         (129) IMPLICIT CarrierInfo
+                                              OPTIONAL,
+    terminatingChargeArea      (130) IMPLICIT ChargeAreaCode
+                                              OPTIONAL,
+    terminatingMobileUserClass1
+                               (131) IMPLICIT MobileUserClass1
+                                              OPTIONAL,
+    terminatingMobileUserClass2
+                               (132) IMPLICIT MobileUserClass2
+                                              OPTIONAL,
+    terminatingUserClass       (133) IMPLICIT UserClass OPTIONAL,
+    contractorNumber           (134) IMPLICIT AddressString
+                                              OPTIONAL,
+    carrierInformation         (135) IMPLICIT CarrierInformation
+                                              OPTIONAL,
+    carrierSelectionSubstitutionInformation
+                               (136) IMPLICIT CarrierSelectionSubstitutionInformation
+                                              OPTIONAL,
+    chargeNumber               (137) IMPLICIT AddressString
+                                              OPTIONAL,
+    interExchangeCarrierIndicator
+                               (138) IMPLICIT NULL OPTIONAL,
+    originatingLineInformation (139) IMPLICIT OriginatingLineInformation
+                                              OPTIONAL,
+    selectedCodec              (140) IMPLICIT SelectedCodec
+                                              OPTIONAL,
+    wPSCallIndicator           (141) IMPLICIT NULL OPTIONAL,
+    userToUserInformation      (142) IMPLICIT UserToUserInformation
+                                              OPTIONAL,
+    callingSubscriberIMEISV    (143) IMPLICIT IMEISV OPTIONAL,
+    globalCallReference        (144) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    roamingPriorityLevel       (145) IMPLICIT RoamingPriorityLevel
+                                              OPTIONAL,
+    rTCIndicator               (146) IMPLICIT NULL
+                                              OPTIONAL,
+    rTCSessionID               (147) IMPLICIT RTCSessionID
+                                              OPTIONAL,
+    rTCDefaultServiceHandling  (148) IMPLICIT RTCDefaultServiceHandling
+                                              OPTIONAL,
+    rTCFailureIndicator        (149) IMPLICIT RTCFailureIndicator
+                                              OPTIONAL,
+    rTCNotInvokedReason        (150) IMPLICIT RTCNotInvokedReason
+                                              OPTIONAL,
+
+--F-- originatedCode            (66) IMPLICIT OriginatedCode
+                                              OPTIONAL,
+--F-- reroutingIndicator       (121) IMPLICIT NULL OPTIONAL,
+--F-- invocationOfCallHold     (122) IMPLICIT NULL OPTIONAL,
+--F-- retrievalOfHeldCall      (123) IMPLICIT NULL OPTIONAL)
+
+MSOriginatingSMSinMSC ::= SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    callingPartyNumber           (4) IMPLICIT AddressString OPTIONAL,
+    callingSubscriberIMSI        (5) IMPLICIT IMSI OPTIONAL,
+    callingSubscriberIMEI        (6) IMPLICIT IMEI OPTIONAL,
+    dateForStartOfCharge         (7) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge         (8) IMPLICIT Time OPTIONAL,
+    chargedParty                 (9) IMPLICIT ChargedParty OPTIONAL,
+    originForCharging           (10) IMPLICIT ChargingOrigin OPTIONAL,
+    exchangeIdentity            (11) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    mSCIdentification           (12) IMPLICIT AddressString OPTIONAL,
+    incomingRoute               (13) IMPLICIT Route OPTIONAL,
+    firstCallingLocationInformation
+                                (14) IMPLICIT LocationInformation
+                                              OPTIONAL,
+    teleServiceCode             (15) IMPLICIT TeleServiceCode
+                                              OPTIONAL,
+    serviceCentreAddress        (16) IMPLICIT AddressString  OPTIONAL,
+    callingSubscriberIMEISV     (17) IMPLICIT IMEISV OPTIONAL,
+    iCIOrdered                  (19) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber         (20) IMPLICIT OutputForSubscriber 
+                                              OPTIONAL,
+    miscellaneousInformation    (21) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    regionalServiceUsed         (22) IMPLICIT RegionalServiceUsed 
+                                              OPTIONAL,
+    regionDependentChargingOrigin
+                                (23) IMPLICIT ChargingOrigin OPTIONAL,
+    channelAllocationPriorityLevel
+                                (24) IMPLICIT
+                                     ChannelAllocationPriorityLevel
+                                              OPTIONAL,
+    frequencyBandSupported      (25) IMPLICIT FrequencyBandSupported
+                                              OPTIONAL,
+    incompleteCallDataIndicator 
+                                (26) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator 
+                                (27) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (28) IMPLICIT NULL OPTIONAL,
+    positionAccuracy            (29) IMPLICIT PositionAccuracy 
+                                              OPTIONAL,
+    userTerminalPosition        (30) IMPLICIT UserTerminalPosition 
+                                              OPTIONAL,
+    switchIdentity              (31) IMPLICIT SwitchIdentity OPTIONAL,
+    destinationAddress          (32) IMPLICIT AddressStringExtended
+                                              OPTIONAL,
+    messageReference            (33) IMPLICIT MessageReference 
+                                              OPTIONAL,
+    messageTypeIndicator        (34) IMPLICIT MessageTypeIndicator
+                                              OPTIONAL,
+    rNCidOfFirstRNC             (35) IMPLICIT TargetRNCid
+                                              OPTIONAL,
+    bCSMTDPData1                (36) IMPLICIT CAMELTDPData OPTIONAL,
+    cAMELCallingPartyNumber     (37) IMPLICIT AddressString OPTIONAL,
+    cAMELDestinationAddress     (38) IMPLICIT AddressStringExtended
+                                              OPTIONAL,
+    cAMELSMSCAddress            (39) IMPLICIT AddressString OPTIONAL,
+    defaultSMSHandling          (40) IMPLICIT DefaultSMS-Handling
+                                              OPTIONAL,
+    freeFormatData              (41) IMPLICIT FreeFormatData OPTIONAL,
+    sMSResult                   (42) IMPLICIT SMSResult OPTIONAL,
+    sMSReferenceNumber          (43) IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    mSCAddress                  (44) IMPLICIT AddressString OPTIONAL,
+    rTCIndicator                (45) IMPLICIT NULL
+                                              OPTIONAL,
+    rTCSessionID                (46) IMPLICIT RTCSessionID
+                                              OPTIONAL,
+    rTCDefaultServiceHandling   (47) IMPLICIT RTCDefaultServiceHandling
+                                              OPTIONAL,
+    rTCFailureIndicator         (48) IMPLICIT RTCFailureIndicator
+                                              OPTIONAL,
+    rTCNotInvokedReason         (49) IMPLICIT RTCNotInvokedReason
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+MSOriginatingSMSinSMS-IWMSC ::=  SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    callingPartyNumber           (3) IMPLICIT AddressString OPTIONAL,
+    dateForStartOfCharge         (4) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge         (5) IMPLICIT Time OPTIONAL,
+    chargedParty                 (6) IMPLICIT ChargedParty OPTIONAL,
+    exchangeIdentity             (7) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    mSCIdentification            (8) IMPLICIT AddressString OPTIONAL,
+    teleServiceCode              (9) IMPLICIT TeleServiceCode
+                                              OPTIONAL,
+    serviceCentreAddress        (10) IMPLICIT AddressString  OPTIONAL,
+    miscellaneousInformation    (11) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    incompleteCallDataIndicator 
+                                (12) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator 
+                                (13) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (14) IMPLICIT NULL OPTIONAL,
+    switchIdentity              (15) IMPLICIT SwitchIdentity OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+
+MSTerminating ::= SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    callingPartyNumber           (4) IMPLICIT AddressString OPTIONAL,
+    calledPartyNumber            (5) IMPLICIT AddressString OPTIONAL,
+    calledSubscriberIMSI         (6) IMPLICIT IMSI OPTIONAL,
+    calledSubscriberIMEI         (7) IMPLICIT IMEI OPTIONAL,
+    mobileStationRoamingNumber   (8) IMPLICIT AddressString OPTIONAL,
+    disconnectingParty           (9) IMPLICIT DisconnectingParty 
+                                              OPTIONAL,
+    dateForStartOfCharge        (10) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge        (11) IMPLICIT Time OPTIONAL,
+    timeForStopOfCharge         (12) IMPLICIT Time OPTIONAL,
+    chargeableDuration          (13) IMPLICIT Time OPTIONAL,
+    interruptionTime            (14) IMPLICIT Time OPTIONAL,
+    timeFromRegisterSeizureToStartOfCharging
+                                (15) IMPLICIT Time OPTIONAL,
+    chargedParty                (16) IMPLICIT ChargedParty OPTIONAL,
+    originForCharging           (17) IMPLICIT ChargingOrigin OPTIONAL,
+    tariffClass                 (18) IMPLICIT TariffClass OPTIONAL,
+    tariffSwitchInd             (19) IMPLICIT TariffSwitchInd 
+                                              OPTIONAL,
+    exchangeIdentity            (20) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    mSCIdentification           (21) IMPLICIT AddressString OPTIONAL,
+    outgoingRoute               (22) IMPLICIT Route OPTIONAL,
+    incomingRoute               (23) IMPLICIT Route OPTIONAL,
+    channelAllocationPriorityLevel
+                                (24) IMPLICIT 
+                                     ChannelAllocationPriorityLevel
+                                              OPTIONAL,
+    terminatingLocationNumber   (25) IMPLICIT AddressString OPTIONAL,
+    timeForTCSeizureCalled      (26) IMPLICIT Time OPTIONAL,
+    firstCalledLocationInformation
+                                (27) IMPLICIT LocationInformation
+                                              OPTIONAL,
+    lastCalledLocationInformation
+                                (28) IMPLICIT LocationInformation
+                                              OPTIONAL,
+    teleServiceCode             (29) IMPLICIT TeleServiceCode
+                                              OPTIONAL,
+    bearerServiceCode           (30) IMPLICIT BearerServiceCode 
+                                              OPTIONAL,
+    transparencyIndicator       (31) IMPLICIT TransparencyIndicator
+                                              OPTIONAL,
+    firstRadioChannelUsed       (32) IMPLICIT FirstRadioChannelUsed
+                                              OPTIONAL,
+    callPosition                (33) IMPLICIT CallPosition OPTIONAL,
+    eosInfo                     (34) IMPLICIT EosInfo OPTIONAL,
+    internalCauseAndLoc         (35) IMPLICIT InternalCauseAndLoc 
+                                              OPTIONAL,
+    originalCalledNumber        (36) IMPLICIT AddressString OPTIONAL,
+    redirectingNumber           (37) IMPLICIT AddressString OPTIONAL,
+    redirectionCounter          (38) IMPLICIT RedirectionCounter 
+                                              OPTIONAL,
+    selectedCodec               (39) IMPLICIT SelectedCodec OPTIONAL,
+    userToUserInformation       (40) IMPLICIT UserToUserInformation
+                                              OPTIONAL,
+    restartDuringCall           (41) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator
+                                (42) IMPLICIT NULL OPTIONAL,
+    dTMFUsed                    (43) IMPLICIT NULL OPTIONAL,
+    iCIOrdered                  (44) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber         (45) IMPLICIT OutputForSubscriber 
+                                              OPTIONAL,
+    lastPartialOutput           (46) IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (47) IMPLICIT PartialOutputRecNum 
+                                              OPTIONAL,
+    relatedCallNumber           (48) IMPLICIT CallIDNumber OPTIONAL,
+    acceptanceOfCallWaiting     (49) IMPLICIT NULL OPTIONAL,
+    miscellaneousInformation    (50) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    cUGInterlockCode            (51) IMPLICIT CUGInterlockCode 
+                                              OPTIONAL,
+    cUGIndex                    (52) IMPLICIT CUGIndex OPTIONAL,
+    cUGIncomingAccessUsed       (53) IMPLICIT NULL OPTIONAL,
+    regionalServiceUsed         (54) IMPLICIT RegionalServiceUsed 
+                                              OPTIONAL,
+    regionDependentChargingOrigin
+                                (55) IMPLICIT ChargingOrigin OPTIONAL,
+    sSCode                      (56) IMPLICIT SSCode OPTIONAL,
+    presentationAndScreeningIndicator
+                                (57) IMPLICIT
+                                     PresentationAndScreeningIndicator
+                                              OPTIONAL,
+    radioChannelProperty        (58) IMPLICIT RadioChannelProperty
+                                              OPTIONAL,
+    faultCode                   (59) IMPLICIT FaultCode OPTIONAL,
+    intermediateRate            (60) IMPLICIT IntermediateRate
+                                              OPTIONAL,
+    firstAssignedSpeechCoderVersion
+                                (61) IMPLICIT SpeechCoderVersion 
+                                              OPTIONAL,
+    speechCoderPreferenceList   (62) IMPLICIT 
+                                     SpeechCoderPreferenceList 
+                                              OPTIONAL,
+    subscriptionType            (63) IMPLICIT SubscriptionType 
+                                              OPTIONAL,
+    incompleteCallDataIndicator 
+                                (64) IMPLICIT NULL OPTIONAL,
+    mSCAddress                  (65) IMPLICIT AddressString
+                                              OPTIONAL,
+    switchIdentity              (66) IMPLICIT SwitchIdentity OPTIONAL,
+    networkCallReference        (67) IMPLICIT NetworkCallReference
+                                              OPTIONAL,
+    frequencyBandSupported      (68) IMPLICIT FrequencyBandSupported
+                                              OPTIONAL,
+    disconnectionDueToSystemRecovery
+                                (69) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (70) IMPLICIT NULL OPTIONAL,
+    forloppReleaseDuringCall    (71) IMPLICIT NULL OPTIONAL,
+    accountCode                 (72) IMPLICIT AccountCode OPTIONAL,
+    gSMCallReferenceNumber      (73) IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL, 
+    eMLPPPriorityLevel          (74) IMPLICIT EMLPPPriorityLevel 
+                                              OPTIONAL,
+    positionAccuracy            (75) IMPLICIT PositionAccuracy 
+                                              OPTIONAL,
+    userTerminalPosition        (76) IMPLICIT UserTerminalPosition 
+                                              OPTIONAL,
+    acceptableChannelCodings    (77) IMPLICIT ChannelCodings 
+                                              OPTIONAL, 
+    outgoingAssignedRoute       (78) IMPLICIT Route OPTIONAL,
+    channelCodingUsed           (79) IMPLICIT ChannelCodings 
+                                              OPTIONAL,
+    multimediaCall              (80) IMPLICIT NULL OPTIONAL,
+    gsmSCFAddress               (81) IMPLICIT AddressString OPTIONAL,
+    fNURRequested               (82) IMPLICIT FixedNetworkUserRate 
+                                              OPTIONAL,
+    aIURRequested               (83) IMPLICIT AirInterfaceUserRate 
+                                              OPTIONAL,
+    numberOfChannelsRequested   (84) IMPLICIT NumberOfChannels 
+                                              OPTIONAL,
+    bSSMAPCauseCode             (85) IMPLICIT BSSMAPCauseCode
+                                              OPTIONAL,
+    guaranteedBitRate           (86) IMPLICIT BitRate OPTIONAL,
+    trafficClass                (87) IMPLICIT TrafficClass OPTIONAL,
+    rANAPCauseCode              (88) IMPLICIT RANAPCauseCode OPTIONAL,
+    rNCidOfFirstRNC             (89) IMPLICIT TargetRNCid OPTIONAL, 
+    maxBitRateDownlink          (90) IMPLICIT BitRate OPTIONAL,
+    maxBitRateUplink            (91) IMPLICIT BitRate OPTIONAL,
+    transferDelay               (92) IMPLICIT TransferDelay
+                                              OPTIONAL,
+    deliveryOfErroneousSDU1     (93) IMPLICIT DeliveryOfErroneousSDU
+                                              OPTIONAL,
+    deliveryOfErroneousSDU2     (94) IMPLICIT DeliveryOfErroneousSDU
+                                              OPTIONAL,
+    deliveryOfErroneousSDU3     (95) IMPLICIT DeliveryOfErroneousSDU
+                                              OPTIONAL,
+    residualBitErrorRatio1      (96) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    residualBitErrorRatio2      (97) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    residualBitErrorRatio3      (98) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    sDUErrorRatio1              (99) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    sDUErrorRatio2             (100) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    sDUErrorRatio3             (101) IMPLICIT ErrorRatio
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL,
+    aCMChargingIndicator       (103) IMPLICIT ChargingIndicator
+                                              OPTIONAL,
+    aNMChargingIndicator       (104) IMPLICIT ChargingIndicator                                         
+                                              OPTIONAL,
+    chargeInformation          (105) IMPLICIT ChargeInformation
+                                              OPTIONAL,
+    disconnectionDate          (106) IMPLICIT Date OPTIONAL,
+    disconnectionTime          (107) IMPLICIT Time OPTIONAL,
+    internationalCallIndicator (108) IMPLICIT NULL OPTIONAL,
+    mobileUserClass1           (109) IMPLICIT MobileUserClass1 
+                                              OPTIONAL,
+    mobileUserClass2           (110) IMPLICIT MobileUserClass2
+                                              OPTIONAL,
+    originatingCarrier         (111) IMPLICIT CarrierInfo OPTIONAL,
+    originatingChargeArea      (112) IMPLICIT ChargeAreaCode OPTIONAL,
+    terminatingCarrier         (113) IMPLICIT CarrierInfo OPTIONAL,
+    terminatingChargeArea      (114) IMPLICIT ChargeAreaCode OPTIONAL,
+    userClass                  (115) IMPLICIT UserClass OPTIONAL,
+    calledSubscriberIMEISV     (116) IMPLICIT IMEISV OPTIONAL,
+    globalCallReference        (117) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+
+--F-- reroutingIndicator       (121) IMPLICIT NULL OPTIONAL,
+--F-- invocationOfCallHold     (122) IMPLICIT NULL OPTIONAL,
+--F-- retrievalOfHeldCall      (123) IMPLICIT NULL OPTIONAL)
+
+MSTerminatingSMSinMSC ::= SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    calledPartyNumber            (3) IMPLICIT AddressString OPTIONAL,
+    calledSubscriberIMSI         (4) IMPLICIT IMSI  OPTIONAL,
+    calledSubscriberIMEI         (5) IMPLICIT IMEI OPTIONAL,
+    dateForStartOfCharge         (6) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge         (7) IMPLICIT Time OPTIONAL,
+    originForCharging            (8) IMPLICIT ChargingOrigin OPTIONAL,
+    chargedParty                 (9) IMPLICIT ChargedParty OPTIONAL,
+    exchangeIdentity            (10) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    mSCIdentification           (11) IMPLICIT AddressString OPTIONAL,
+    outgoingRoute               (12) IMPLICIT Route OPTIONAL,
+    firstCalledLocationInformation
+                                (13) IMPLICIT LocationInformation
+                                              OPTIONAL,
+    teleServiceCode             (14) IMPLICIT TeleServiceCode
+                                              OPTIONAL,
+    serviceCentreAddress        (15) IMPLICIT AddressString OPTIONAL,
+    iCIOrdered                  (18) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber         (19) IMPLICIT OutputForSubscriber 
+                                              OPTIONAL,
+    miscellaneousInformation    (20) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    regionalServiceUsed         (21) IMPLICIT RegionalServiceUsed 
+                                              OPTIONAL,
+    regionDependentChargingOrigin
+                                (22) IMPLICIT ChargingOrigin OPTIONAL,
+    channelAllocationPriorityLevel
+                                (23) IMPLICIT
+                                     ChannelAllocationPriorityLevel
+                                              OPTIONAL,
+    incompleteCallDataIndicator 
+                                (24) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator 
+                                (25) IMPLICIT NULL OPTIONAL,
+    frequencyBandSupported      (26) IMPLICIT FrequencyBandSupported
+                                              OPTIONAL,
+    forloppDuringOutputIndicator
+                                (27) IMPLICIT NULL OPTIONAL,
+    numberOfShortMessages       (28) IMPLICIT NumberOfShortMessage 
+                                              OPTIONAL,
+    lastCalledLocationInformation
+                                (29) IMPLICIT LocationInformation
+                                              OPTIONAL,
+    positionAccuracy            (30) IMPLICIT PositionAccuracy
+                                              OPTIONAL,
+    userTerminalPosition        (31) IMPLICIT UserTerminalPosition 
+                                              OPTIONAL,
+    switchIdentity              (32) IMPLICIT SwitchIdentity OPTIONAL,
+    originatingAddress          (33) IMPLICIT AddressStringExtended
+                                              OPTIONAL,
+    messageTypeIndicator        (34) IMPLICIT MessageTypeIndicator
+                                              OPTIONAL,
+    rNCidOfFirstRNC             (35) IMPLICIT TargetRNCid
+                                              OPTIONAL,
+    bCSMTDPData1                (36) IMPLICIT CAMELTDPData OPTIONAL,
+    defaultSMSHandling          (37) IMPLICIT DefaultSMS-Handling
+                                              OPTIONAL,
+    freeFormatData              (38) IMPLICIT FreeFormatData OPTIONAL,
+    sMSResult                   (39) IMPLICIT SMSResult OPTIONAL,
+    sMSReferenceNumber          (40) IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    mSCAddress                  (41) IMPLICIT AddressString OPTIONAL,
+    cAMELOriginatingAddress     (42) IMPLICIT AddressStringExtended 
+                                              OPTIONAL,
+    calledSubscriberIMEISV      (43) IMPLICIT IMEISV OPTIONAL,
+    rTCIndicator                (44) IMPLICIT NULL
+                                              OPTIONAL,
+    rTCSessionID                (45) IMPLICIT RTCSessionID
+                                              OPTIONAL,
+    rTCDefaultServiceHandling   (46) IMPLICIT RTCDefaultServiceHandling
+                                              OPTIONAL,
+    rTCFailureIndicator         (47) IMPLICIT RTCFailureIndicator
+                                              OPTIONAL,
+    rTCNotInvokedReason         (48) IMPLICIT RTCNotInvokedReason
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+
+MSTerminatingSMSinSMS-GMSC ::= SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    calledPartyNumber            (3) IMPLICIT AddressString OPTIONAL,
+    calledSubscriberIMSI         (4) IMPLICIT IMSI OPTIONAL,
+    mobileStationRoamingNumber   (5) IMPLICIT AddressString OPTIONAL,
+    dateForStartOfCharge         (6) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge         (7) IMPLICIT Time OPTIONAL,
+    chargedParty                 (8) IMPLICIT ChargedParty OPTIONAL,
+    exchangeIdentity             (9) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    mSCIdentification           (10) IMPLICIT AddressString OPTIONAL,
+    teleServiceCode             (11) IMPLICIT TeleServiceCode
+                                              OPTIONAL,
+    serviceCentreAddress        (12) IMPLICIT AddressString  OPTIONAL,
+    mSCNumber                   (13) IMPLICIT AddressString OPTIONAL,
+    miscellaneousInformation    (14) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    incompleteCallDataIndicator 
+                                (15) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator 
+                                (16) IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (17) IMPLICIT NULL OPTIONAL,
+    numberOfShortMessages       (18) IMPLICIT NumberOfShortMessage 
+                                              OPTIONAL,
+    switchIdentity              (19) IMPLICIT SwitchIdentity OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+SCFChargingOutput ::= SET(
+    callIdentificationNumber    (0)  IMPLICIT CallIDNumber OPTIONAL,
+    exchangeIdentity            (1)  IMPLICIT ExchangeIdentity 
+                                              OPTIONAL,
+    gSMCallReferenceNumber      (2)  IMPLICIT GSMCallReferenceNumber
+                                              OPTIONAL,
+    restartDuringCall           (3)  IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator
+                                (4)  IMPLICIT NULL OPTIONAL,
+    lastPartialOutput           (5)  IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (6)  IMPLICIT PartialOutputRecNum
+                                              OPTIONAL,
+    switchIdentity              (7)  IMPLICIT SwitchIdentity OPTIONAL,
+    disconnectionDueToSystemRecovery
+                                (8)  IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                                (9)  IMPLICIT NULL OPTIONAL,
+    forloppReleaseDuringCall    (10) IMPLICIT NULL OPTIONAL,
+    recordSequenceNumber        (11) IMPLICIT RecordSequenceNumber 
+                                              OPTIONAL,
+    incompleteCallDataIndicator
+                                (12) IMPLICIT NULL OPTIONAL,
+    mSCAddress                  (13) IMPLICIT AddressString
+                                             OPTIONAL,
+    date                        (14) IMPLICIT Date OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+SSProcedure ::= SET(
+    tAC                          (0) IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber     (1) IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber         (2) IMPLICIT RecordSequenceNumber
+                                              OPTIONAL,
+    typeOfCallingSubscriber      (3) IMPLICIT TypeOfCallingSubscriber
+                                              OPTIONAL,
+    callingPartyNumber           (4) IMPLICIT AddressString OPTIONAL,
+    callingSubscriberIMSI        (5) IMPLICIT IMSI OPTIONAL,
+    callingSubscriberIMEI        (6) IMPLICIT IMEI OPTIONAL,
+    dateForStartOfCharge         (7) IMPLICIT Date OPTIONAL,
+    timeForStartOfCharge         (8) IMPLICIT Time OPTIONAL,
+    originForCharging            (9) IMPLICIT ChargingOrigin OPTIONAL,
+    exchangeIdentity            (10) IMPLICIT ExchangeIdentity
+                                              OPTIONAL,
+    mSCIdentification           (11) IMPLICIT AddressString OPTIONAL,
+    firstCallingLocationInformation
+                                (12) IMPLICIT LocationInformation
+                                              OPTIONAL,
+    callingSubscriberIMEISV     (13) IMPLICIT IMEISV OPTIONAL,
+    iCIOrdered                  (15) IMPLICIT NULL OPTIONAL,
+    outputForSubscriber         (16) IMPLICIT OutputForSubscriber 
+                                              OPTIONAL,
+    sSCode                      (17) IMPLICIT SSCode OPTIONAL,
+    sSRequest                   (18) IMPLICIT SSRequest OPTIONAL,
+    miscellaneousInformation    (19) IMPLICIT MiscellaneousInformation
+                                              OPTIONAL,
+    regionalServiceUsed         (20) IMPLICIT RegionalServiceUsed 
+                                              OPTIONAL,
+    regionDependentChargingOrigin
+                                (21) IMPLICIT ChargingOrigin OPTIONAL,
+    relatedCallNumber           (22) IMPLICIT CallIDNumber OPTIONAL,
+    uSSDApplicationIdentifier   (23) IMPLICIT ApplicationIdentifier
+                                              OPTIONAL,
+    uSSDServiceCode             (24) IMPLICIT ServiceCode OPTIONAL,
+    uSSDProcedureCode           (25) IMPLICIT ProcedureCode OPTIONAL,
+    networkInitiatedUSSDOperations
+                                (26) IMPLICIT NumberOfOperations 
+                                              OPTIONAL,
+    uSSDOperationIdentifier     (27) IMPLICIT OperationIdentifier 
+                                              OPTIONAL,
+    incompleteCallDataIndicator 
+                                (28) IMPLICIT NULL OPTIONAL,
+    restartDuringOutputIndicator 
+                                (29) IMPLICIT NULL OPTIONAL,
+    frequencyBandSupported      (30) IMPLICIT FrequencyBandSupported
+                                              OPTIONAL,
+    forloppDuringOutputIndicator
+                                (31) IMPLICIT NULL OPTIONAL,
+    switchIdentity              (32) IMPLICIT SwitchIdentity OPTIONAL,
+    networkCallReference        (33) IMPLICIT NetworkCallReference
+                                              OPTIONAL, 
+    positionAccuracy            (34) IMPLICIT PositionAccuracy 
+                                              OPTIONAL,
+    userTerminalPosition        (35) IMPLICIT UserTerminalPosition 
+                                              OPTIONAL,
+    rNCidOfFirstRNC             (36) IMPLICIT TargetRNCid
+                                              OPTIONAL,
+    globalCallReference         (37) IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    outputType                 (102) IMPLICIT OutputType OPTIONAL)
+
+TransitINOutgoingCall ::= SET(
+    tAC                         (0)  IMPLICIT TAC OPTIONAL,
+    callIdentificationNumber    (1)  IMPLICIT CallIDNumber OPTIONAL,
+    recordSequenceNumber        (2)  IMPLICIT RecordSequenceNumber 
+                                              OPTIONAL,
+    outgoingRoute               (3)  IMPLICIT Route OPTIONAL,
+    subscriptionType            (4)  IMPLICIT SubscriptionType 
+                                              OPTIONAL,
+    incompleteCallDataIndicator 
+                                (5)  IMPLICIT NULL OPTIONAL,
+    incompleteCompositeCDRIndicator
+                                (6)  IMPLICIT NULL OPTIONAL,
+    lastPartialOutput           (7)  IMPLICIT NULL OPTIONAL,
+    partialOutputRecNum         (8)  IMPLICIT PartialOutputRecNum 
+                                              OPTIONAL,
+    restartDuringOutputIndicator 
+                                (9)  IMPLICIT NULL OPTIONAL,
+    exchangeIdentity           (10)  IMPLICIT ExchangeIdentity 
+                                              OPTIONAL,
+    restartDuringCall          (11)  IMPLICIT NULL OPTIONAL,
+    networkCallReference       (12)  IMPLICIT NetworkCallReference
+                                              OPTIONAL,
+    iCIOrdered                 (13)  IMPLICIT NULL OPTIONAL,
+    outputForSubscriber        (14)  IMPLICIT OutputForSubscriber 
+                                              OPTIONAL,
+    switchIdentity             (15)  IMPLICIT SwitchIdentity 
+                                              OPTIONAL,
+    disconnectionDueToSystemRecovery
+                               (16)  IMPLICIT NULL OPTIONAL,
+    forloppDuringOutputIndicator
+                               (17)  IMPLICIT NULL OPTIONAL,
+    tariffClass                (18)  IMPLICIT TariffClass OPTIONAL,
+    forloppReleaseDuringCall   (19)  IMPLICIT NULL OPTIONAL,
+    c7ChargingMessage          (20)  IMPLICIT C7ChargingMessage 
+                                              OPTIONAL,
+    c7FirstCHTMessage          (21)  IMPLICIT C7CHTMessage OPTIONAL,
+    c7SecondCHTMessage         (22)  IMPLICIT C7CHTMessage OPTIONAL,
+    contractorNumber           (23)  IMPLICIT AddressString
+                                              OPTIONAL,
+    calledPartyMNPInfo         (24)  IMPLICIT AddressString
+                                              OPTIONAL,
+    globalCallReference        (25)  IMPLICIT GlobalCallReference
+                                              OPTIONAL,
+    outputType                (102)  IMPLICIT OutputType OPTIONAL)
+
+AccountCode ::= TBCDString (SIZE(1..5))
+
+AddressStringExtended ::= OCTET STRING (SIZE(1..20))
+
+AgeOfLocationEstimate ::= OCTET STRING (SIZE(2))
+
+AoCCurrencyAmountSent ::= OCTET STRING (SIZE(4))
+
+BearerServiceCode ::= OCTET STRING (SIZE(1))
+
+
+BitRate ::= OCTET STRING (SIZE(1))
+
+
+CUGIndex ::= OCTET STRING (SIZE(2))
+
+CallAttemptState ::= ENUMERATED
+
+ (initialState           (0),
+  callSentState          (1),
+  callRejectedState      (2),
+  callOfferedState       (3),
+  noResponseState        (4),
+  alertingState          (5),
+  unknownCallState       (6),
+  callActiveState        (7))
+
+CauseCode ::= OCTET STRING (SIZE(1))
+
+ChannelAllocationPriorityLevel ::= OCTET STRING (SIZE(1))
+
+ChargingCase ::= OCTET STRING (SIZE(2))
+
+
+DecipheringKeys ::= OCTET STRING (SIZE (8..15))
+
+DefaultSMS-Handling ::= ENUMERATED
+ (continueTransaction             (0),
+  releaseTransaction              (1))
+
+DeliveryOfErroneousSDU ::= ENUMERATED
+
+ (yes                              (0),
+  no                               (1),
+  noErrorDetectionConsideration    (2))
+
+EMLPPPriorityLevel ::= OCTET STRING (SIZE(1)) 
+
+EndToEndAccessDataMap ::= OCTET STRING (SIZE(1)) 
+
+ApplicationIdentifier ::= OCTET STRING (SIZE(2))
+
+
+ErrorRatio ::= OCTET STRING (SIZE(2))
+
+FirstRadioChannelUsed ::= ENUMERATED
+
+ (fullRateChannel               (0),
+  halfRateChannel               (1))
+
+FixedNetworkUserRate ::= ENUMERATED
+
+ (fNUR9600bps                  (1),
+  fNUR14400bps                 (2),
+  fNUR19200bps                 (3),
+  fNUR28800bps                 (4),
+  fNUR38400bps                 (5),
+  fNUR48000bps                 (6),
+  fNUR56000bps                 (7),
+  fNUR64000bps                 (8),
+  fNURautobauding              (9))
+
+FrequencyBandSupported ::= OCTET STRING (SIZE(1))
+
+IMEI ::= TBCDString (SIZE(8))
+
+IMEISV ::= TBCDString (SIZE(8))
+
+IntermediateRate ::= ENUMERATED
+
+ (rate8KbitPerSecondUsed           (2),
+  rate16KbitPerSecondUsed          (3))
+
+LCSAccuracy ::= OCTET STRING (SIZE(1))
+
+LCSClientType ::= ENUMERATED
+
+  (emergencyServices                  (0),
+   valueAddedServices                 (1),
+   plmnOperatorServices               (2),
+   lawfulInterceptServices            (3))
+
+LCSDeferredEventType::= ENUMERATED
+
+  (deferred_MT_UEreachableEvent       (0))
+
+
+LocationCode ::= OCTET STRING (SIZE(1))
+
+LocationEstimate ::= OCTET STRING (SIZE(1..91))
+
+MessageReference ::= OCTET STRING (SIZE(1))
+
+MessageTypeIndicator ::= ENUMERATED
+
+ (sMSdeliverSCtoMS         (0),
+  sMSdeliveReportMStoSC    (1),
+  sMSstatusReportSCtoMS    (2),
+  sMScommanMStoSC          (3),
+  sMSsubmitMStoSC          (4),
+  sMSsubmitReportSCtoMS    (5),
+  reservedMTIValue         (6))
+
+
+NumberOfOperations ::= OCTET STRING (SIZE(1))
+
+NumberOfShortMessage ::= OCTET STRING (SIZE(2))
+
+OperationIdentifier ::= OCTET STRING (SIZE(1))
+
+OptimalRoutingType ::= ENUMERATED
+
+   (optimalRoutingAtLateCallForwarding    (0))
+
+PositionAccuracy ::= OCTET STRING (SIZE(2))
+
+PositioningDelivery ::= OCTET STRING (SIZE(1))
+
+ProcedureCode ::= TBCDString (SIZE(1))
+
+RegionalServiceUsed ::= ENUMERATED
+
+ (localSubscription                                  (0),
+  regionalSubcription                                (1),
+  subscriptionWithTariffAreas                        (2),
+  regionalSubcriptionAndSubscriptionWithTariffAreas  (3))
+
+ResponseTimeCategory ::= ENUMERATED
+
+ (lowdelay       (0),
+  delaytolerant  (1))
+
+
+RoamingPriorityLevel ::= OCTET STRING (SIZE(1))
+
+SMSResult ::= ENUMERATED
+ 
+ (unsuccessfulMOSMSDeliverytoSMSCDuetoCAMELReason  (0),
+  unsuccessfulMOSMSDeliverytoSMSCDuetoOtherReason  (1),
+  unsuccessfulMTSMSDeliverytoMSDuetoCAMELReason    (2),
+  unsuccessfulMTSMSDeliverytoMSDuetoOtherReason    (3),
+  unsuccellfulMOSMSDeliverytoSMSCDuetoRTCFAReason  (4),
+  unsuccessfulMTSMSDeliverytoMSDuetoRTCFAReason    (5))
+
+SelectedCodec ::= ENUMERATED
+
+ (gSMFullRate                (0),
+  gSMHalfRate                (1),
+  gSMEnhancedFullRate        (2),
+  fullRateAdaptiveMultiRate  (3),
+  halfRateAdaptiveMultiRate  (4),
+  uMTSAdaptiveMultiRate      (5),
+  uMTSAdaptiveMultiRate2     (6),
+  tDMAEnhancedFullRate       (7),
+  pDCEnhancedFullRate        (8),
+  inmarsatCoding            (15))
+
+ServiceCode ::= TBCDString (SIZE(1..2))
+
+
+SpeechCoderPreferenceList ::= OCTET STRING (SIZE (1..6))
+
+SpeechCoderVersion ::= ENUMERATED
+
+ (fullRateVersion1         (0),
+  fullRateVersion2         (1),
+  fullRateVersion3         (2),
+  halfRateVersion1         (3),
+  halfRateVersion2         (4),
+  halfRateVersion3         (5))
+
+SubscriberState ::= ENUMERATED
+
+ (detached                   (0),
+  attached                   (1),
+  implicitDetached           (2))
+
+
+TeleServiceCode ::= OCTET STRING (SIZE (1))
+
+TrafficClass ::= OCTET STRING (SIZE(1))
+
+TransferDelay ::= OCTET STRING (SIZE(2))
+
+TransparencyIndicator ::= ENUMERATED
+
+(transparent                              (0),
+ nonTransparent                           (1))
+
+
+TypeOfCalledSubscriber ::= ENUMERATED
+
+  (pSTNSubscriber       (0),
+   iSDNSubscriber       (1),
+   unknownSubscriber    (2))
+
+TypeOfLocationRequest ::= ENUMERATED
+
+ (mT_LocationRequestCurrentLocation              (0),
+  mT_LocationRequestCurrentOrLastKnownLocation   (1),
+  mO_LocationRequestLocEstimateToMS              (2),
+  mO_LocationRequestLocEstimateToThirdParty      (3),
+  mO_LocationRequestAssistData                   (4),
+  mO_LocationRequestDeciphKeys                   (5),
+  nI_LocationRequest                             (6),
+  mT_LocationRequestDeferred                     (7))
+
+TypeOfSignalling ::= ENUMERATED 
+
+  (iSUPIsNotAppliedAllTheWay       (0),
+   iSUPIsAppliedAllTheWay          (1),
+   unknownSignalling               (2))
+
+UnsuccessfulPositioningDataReason ::= ENUMERATED 
+
+  (systemError                           (0),
+   userDeniedDueToPrivacyVerification    (1))
+
+UserTerminalPosition ::= OCTET STRING (SIZE(7))
+
+UserToUserService1Information ::= OCTET STRING (SIZE(2))
